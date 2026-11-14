@@ -1,0 +1,216 @@
+PRESPECIFIED PROTOCOL
+Quantum, product-state and quantum-inspired bottlenecks for breast ultrasound lesion segmentation:
+qubit count, limited training data and a bottleneck audit (BUSI, with external testing on BUS-BRA and BrEaST)
+
+Version 1.0. Written before any image of BUSI, BUS-BRA or BrEaST was loaded by the study code and before
+any training run. The file is committed to the project repository; the commit time stamp is the time of
+prespecification. Changes after that commit are recorded under "Deviations" with date and reason.
+
+Target venue: 3rd IEEE International Conference on Cognitive Computing in Engineering, Communications,
+Sciences and Biomedical Health Informatics (IC3ECSBHI 2027), full-paper deadline 31 December 2026.
+
+Related work by the same group (cited as submitted manuscripts, no results reused):
+  [P1] parameter-matched ablation of a quantum bottleneck for breast-region segmentation (BMC Medical Imaging);
+  [P2] global and patch-wise quantum bottleneck for mammographic mass segmentation (Quantum Machine Intelligence).
+This study uses new data (breast ultrasound), new controls (product-state circuit, full Fourier surrogate),
+qubit counts 2, 4 and 8, limited-data training and external ultrasound test sets. No image, run or result of
+P1 or P2 is used.
+
+---------------------------------------------------------------------------------------------------------
+1. QUESTIONS
+---------------------------------------------------------------------------------------------------------
+Q1 (entanglement). In a U-Net bottleneck with trained block weights, does the 4-qubit circuit with its
+    CNOT ring segment breast ultrasound lesions better than the same circuit without CNOT gates
+    (product-state circuit)?
+Q2 (function class). Does the circuit differ from a classical layer that spans its whole Fourier series
+    (3^n terms), from a trigonometric layer that spans only its single-input terms, and from Dense(n)?
+Q3 (efficiency, positive contribution). Are the 4-dimensional circuit and quantum-inspired trigonometric
+    bottlenecks non-inferior, within 0.02 Dice, to the same network without compression and to a standard
+    U-Net, with far fewer bottleneck parameters?
+Q4 (limited data, positive contribution). With 10%, 25% and 50% of the training images, do the circuit or
+    the trigonometric bottleneck segment better than Dense(n) or the uncompressed network?
+Q5 (qubit count). How do the contrasts of Q1 and Q2 change with 2, 4 and 8 qubits?
+Q6 (bottleneck audit, positive contribution). Does each network use its bottleneck code, how far do the
+    block weights move, how entangled are the circuit states, and how well does a classical surrogate fitted
+    to the trained circuit reproduce it? The audit is reported as a reusable procedure.
+
+All estimands below are reported in full whatever their direction. A "positive contribution" is a claim
+defined in advance (Section 8) and made only if its criterion is met.
+
+---------------------------------------------------------------------------------------------------------
+2. DATA
+---------------------------------------------------------------------------------------------------------
+2.1 BUSI (development and internal testing). Dataset of Breast Ultrasound Images (Al-Dhabyani et al., Data in
+    Brief 2020;28:104863): 780 PNG images (normal, benign, malignant) with lesion masks, Baheya Hospital, Cairo.
+    Images are used as distributed; they are not redistributed by this project (only file names, split
+    assignments and per-image scores are shared).
+    Cleaning, fixed before loading (Pawlowska et al., Data in Brief 2023, letter on BUSI, with its
+    supplementary list, Mendeley Data doi:10.17632/k8t3gnx9h6.1, CC BY 4.0):
+      (a) duplicates and near-duplicates listed in the supplementary file form one group; one image per
+          group is kept (the one with the lowest class-folder index, i.e. the first file name in sorted
+          order); a group whose members appear in more than one class is removed entirely;
+      (b) images listed as showing the axilla instead of the breast, a biopsy needle or a questionable
+          lesion class are removed;
+      (c) images with annotations (calipers, text) are kept; a sensitivity analysis removes those listed
+          with annotations in the region of interest;
+      (d) the normal class has no lesion and is not used for training; cleaned normal images are used only
+          for the false-positive analysis (Section 7.6).
+    Independent duplicate check (audit, does not change the cleaning): 64-bit difference hash of each image
+    after resizing to 9x8; pairs with Hamming distance <= 4 that are not in the list are reported; if any
+    such pair crosses folds, both images are placed in the fold of the lower-index image (recorded).
+    If the supplementary list cannot be obtained, the hash check (Hamming <= 4) defines the duplicate groups
+    and step (b) is skipped (recorded as a deviation).
+    Masks: all mask files of an image (_mask, _mask_1, ...) are combined by union and binarized at 128.
+2.2 Folds. Five folds, stratified by class (benign, malignant), random assignment with seed 2027 at the level
+    of the kept images (after duplicate grouping). For fold k: test = fold k, validation = fold (k+1) mod 5,
+    training = the other three folds. Every image is tested once per seed.
+2.3 Limited-data subsets. For each fold, nested stratified random subsets of the training images with 10%,
+    25% and 50% of them (seed 2027; the 10% subset is contained in the 25% subset, which is contained in the
+    50% subset). Validation and test images are unchanged.
+2.4 External test sets (no training, no tuning, no threshold selection):
+      (i)  BUS-BRA (Gomez-Flores et al., Medical Physics 2024; Zenodo doi:10.5281/zenodo.7730709, CC BY 4.0):
+           breast ultrasound images of 1,064 patients from Brazil with lesion delineations; all images with a
+           delineation are used; patients are the clusters.
+      (ii) BrEaST-Lesions_USG (Pawlowska et al., Scientific Data 2024; TCIA, CC BY 4.0): 256 images from
+           Poland with lesion masks; images without a lesion are excluded; patients are the clusters.
+           Used only if the files can be downloaded with masks; otherwise omitted (recorded).
+2.5 Preprocessing (all sets): convert to 8-bit grayscale; zero-pad to square; resize to 256 x 256 (bilinear
+    for images, nearest for masks); scale intensities to [0, 1]. No cropping, no histogram equalization.
+    Training augmentation: horizontal flip (p = 0.5), rotation uniform in +/-10 degrees, brightness and
+    contrast factors uniform in [0.8, 1.2]. MD5 checksums of all prepared arrays are recorded.
+
+---------------------------------------------------------------------------------------------------------
+3. MODELS
+---------------------------------------------------------------------------------------------------------
+Host network (all hybrid and control models): U-Net encoder with four convolutional blocks (32, 64, 128, 256
+filters; two 3x3 convolutions with batch normalization and ReLU; dropout 0.1, 0.1, 0.2, 0.2), max pooling,
+bottleneck block with 512 filters (dropout 0.3) at 16 x 16, and a mirrored decoder with skip connections and
+a 1 x 1 sigmoid output. Global bottleneck slot (n = number of qubits):
+    16x16x512 -> global average pooling -> Dense(n, tanh) -> BLOCK(n -> n) -> replace-code layer
+              -> Dense(512, ReLU) -> tile to 16x16x512 -> decoder
+The replace-code layer is the identity in training (used only by the audit, Section 6).
+BLOCK options for n in {2, 4, 8}:
+  Q   circuit: RY(pi c_j / 2) on qubit j; two layers of Rot(phi, theta, omega) on every qubit followed by a ring of
+      CNOT gates (j -> j+1, last -> first); outputs <Z_j>. 6n weights (the final omega of every qubit cannot affect
+      the output; 5n effective). Exact state-vector simulation in TensorFlow.
+  Qp  product-state circuit: Q without CNOT gates (same weights, same initial values). Each output depends on
+      one input only.
+  S   Fourier surrogate: features prod_j f_j(c_j) with f_j in {1, cos(pi c_j/2), sin(pi c_j/2)} (all 3^n
+      products) followed by a linear map to n outputs and tanh. Contains every function Q can compute up to the
+      output tanh. Weights: n * 3^n + n (n = 2: 20; 4: 328; 8: 52,496).
+  Tr  trigonometric layer: tanh(A cos(pi c / 2 + phi)), A in R^{n x n}, phi in R^n (n^2 + n weights). Spans only
+      single-input terms plus mixing.
+  Cl  Dense(n, tanh) (n^2 + n weights).
+  Id  identity (no weights).
+References: "full" = same host without the slot (bottleneck map passed on uncompressed); "unet" = standard U-Net
+(64-1024 filters, transposed-convolution decoder).
+Model names: q2, qp2, s2, tr2, cl2, id2, q4, ..., id8, full, unet.
+Initialization: for a given seed, every model with the same layer names starts from identical initial weights in
+all shared layers (encoder, bottleneck block, Dense(n), Dense(512), decoder, output), copied from the q-model of
+that seed and n; Qp copies the circuit weights of Q; the check is stored before training (max absolute
+difference must be 0). Circuit angles are initialized uniformly on [0, 2 pi); Tr phase uniformly on [0, 2 pi) and A
+Glorot uniform; S and Cl Glorot uniform with zero bias.
+
+---------------------------------------------------------------------------------------------------------
+4. TRAINING
+---------------------------------------------------------------------------------------------------------
+Loss: binary cross-entropy + (1 - soft Dice). Adam (beta1 0.9, beta2 0.999, eps 1e-7), base learning rate 1e-4,
+batch size 16, at most 200 epochs, early stopping on validation loss with patience 20 (minimum 30 epochs),
+ReduceLROnPlateau on validation loss (factor 0.5, patience 8, minimum 1e-6); the weights of the epoch with the
+lowest validation loss are restored and tested. Mixed precision off. Seeds set for Python, NumPy and TensorFlow;
+operation determinism enabled where available.
+Block learning rate. In P1 and P2 the 20 block weights barely moved at the shared rate of 1e-4. Here every block
+weight w is stored as v = w / k and used as w = k v, which multiplies its effective learning rate by k. The factor
+k in {1, 10, 100} is selected separately for each of Q, Qp, S, Tr and Cl and each n by the lowest best validation
+loss in one selection run per factor (fold 0, seed 100, full training data, at most 80 epochs, same settings
+otherwise). Seed 100 is not an estimation seed, so selection and estimation do not share a seed. The selected
+factors are recorded before the main runs and also used for the limited-data runs.
+Seeds: 0, 1, 2 for the primary, efficiency and qubit-count runs; 0, 1 for the limited-data runs.
+Run plan (main):
+  A  n = 4, full data: q4, qp4, s4, tr4, cl4, id4, full, unet                 8 x 5 folds x 3 seeds = 120
+  B  n = 2 and 8, full data: q, qp, s, tr, cl                                10 x 5 folds x 3 seeds = 150
+  C  n = 4, fractions 10%, 25%, 50%: q4, tr4, cl4, full                     12 x 5 folds x 2 seeds = 120
+  Selection runs: 5 blocks x 3 n x 3 factors = 45 (fold 0, seed 100, at most 80 epochs).
+Compute rule: the selection runs give the time per epoch of every model. The projected total of the main runs
+(time per epoch x 1.5 x the mean number of epochs of the selection runs, per model) decides the plan: if it exceeds
+80 GPU-hours, then, in this order, (1) plan C uses seed 0 only, (2) plan B uses seeds 0 and 1. The decision is
+recorded (plan_decision.json) before the first main run. Runs are distributed over Colab sessions with lock files; a run that
+fails is restarted from scratch with the same seed; no run is discarded for its result.
+
+---------------------------------------------------------------------------------------------------------
+5. EVALUATION
+---------------------------------------------------------------------------------------------------------
+Threshold 0.5 on the sigmoid output. Per-image Dice (primary metric; an image with empty prediction and
+non-empty mask has Dice 0), IoU, precision, recall, 95th-percentile Hausdorff distance (HD95, pixels at 256 x 256;
+undefined for empty predictions, which are counted separately), empty-prediction rate. Trainable parameters,
+bottleneck parameters, training time and inference time per image (batch 1, same GPU type) are recorded.
+External sets: every run of plan A is evaluated on BUS-BRA and BrEaST.
+
+---------------------------------------------------------------------------------------------------------
+6. BOTTLENECK AUDIT (every run of plans A and B; the same procedure is reported as a reusable tool)
+---------------------------------------------------------------------------------------------------------
+6.1 Code replacement: test Dice when the block output is replaced by (const) the mean code over the training
+    images, or (swap) the code of a randomly drawn training image (10 fixed draws, averaged). Dice drop =
+    normal - replaced. A model "uses its code" if the mean drop over runs is at least 0.02 Dice and its 95% CI
+    excludes 0.
+6.2 Weight movement: relative change ||w_final - w_init|| / ||w_init|| of the block, of Dense(n) and Dense(512);
+    circuit angles wrapped to (-pi, pi].
+6.3 Gradient share: norm of the loss gradient of the block weights relative to all weights, at the first and
+    the restored epoch (4 fixed training batches).
+6.4 Entanglement (Q models): mean Meyer-Wallach entanglement of the circuit states over the test codes (Qp has 0
+    by construction).
+6.5 Classical surrogate fit (Q models): a linear map on the 3^n Fourier features fitted by least squares to the
+    trained circuit outputs on the training codes; R^2 on the test codes. R^2 near 1 means the trained circuit is
+    reproduced exactly by a classical model (as the theory implies for exact simulation).
+6.6 Finite shots (q4, plan A): test Dice when each <Z_j> is estimated from 1,024 shots (binomial draws, 5 repeats,
+    qubits drawn independently).
+
+---------------------------------------------------------------------------------------------------------
+7. STATISTICS
+---------------------------------------------------------------------------------------------------------
+Unit: per-image test Dice. Uncertainty: crossed hierarchical bootstrap over clusters (BUSI: kept images, a
+duplicate group counting as one; external sets: patients) and seeds, the same resampled clusters and seeds for both
+models of a contrast; B = 10,000 replicates; numpy default_rng(0), one generator per family in the order listed.
+Difference = mean over seeds and images of (A - B). 95% percentile intervals; two-sided bootstrap p-values; Holm
+correction within each family. Equivalence: the 90% interval inside +/-0.02 Dice (two one-sided tests at 5%).
+Non-inferiority: one-sided test of H0: difference <= -0.02, at 5% after Holm (equivalently, the lower 95% one-sided
+limit, i.e. the lower limit of the 90% interval, above -0.02). Reported for every contrast: difference, 95% CI, 90%
+CI, Holm p, verdict (difference, equivalent, non-inferior, inconclusive), the CI half-width as the smallest
+difference the design could detect, and per-seed and leave-one-seed-out estimates.
+7.1 F1 primary (BUSI, n = 4, full data): q4 - qp4, q4 - s4, q4 - tr4, q4 - cl4.
+7.2 F2 efficiency (BUSI, non-inferiority, margin 0.02): tr4 - full, q4 - full, tr4 - unet, q4 - unet.
+7.3 F3 limited data (BUSI, n = 4), one family per fraction: q4 - cl4, tr4 - cl4, q4 - full, tr4 - full.
+7.4 F4 qubit count: q - qp and q - tr at n = 2 and n = 8 (four contrasts); model levels for all n (descriptive);
+    the change of q - qp and q - tr between n = 2, 4 and 8 is descriptive.
+7.5 Secondary, external sets: F1 and F2 contrasts on BUS-BRA and on BrEaST (separate families per set).
+7.6 Secondary: on cleaned BUSI normal images, rate of non-empty predictions (false-positive images) per model, n = 4.
+7.7 Sensitivity: F1 and F2 without the images listed with annotations in the region of interest; F1 by class
+    (benign, malignant), descriptive.
+Margin: +/-0.02 Dice, the margin of P2; for reference, the between-seed SD of model Dice is reported.
+
+---------------------------------------------------------------------------------------------------------
+8. PREDEFINED CLAIMS (made only if the criterion is met; otherwise the result is reported as found)
+---------------------------------------------------------------------------------------------------------
+C1 Efficiency: "a 4-dimensional quantum-inspired (trigonometric) / circuit bottleneck with X trainable bottleneck
+   weights is non-inferior to the uncompressed network (and to a standard U-Net)": F2 non-inferiority verdict.
+C2 Limited data: "with p% of the training data the circuit / trigonometric bottleneck scores higher than Dense(4) /
+   the uncompressed network": F3 difference with Holm p < 0.05 and positive direction.
+C3 Entanglement: "the CNOT gates add (no) measurable benefit": F1 q4 - qp4 difference (positive) or equivalence.
+C4 Function class: "a classical surrogate of the circuit's Fourier series matches the circuit": F1 q4 - s4
+   equivalence and audit 6.5 R^2 >= 0.99.
+C5 Audit: "the networks use (do not use) their bottleneck code": criterion of 6.1.
+A claim of quantum advantage is made only if q4 scores higher than qp4, s4, tr4 and cl4 in F1 (all four with Holm
+p < 0.05) and the direction holds on BUS-BRA.
+
+---------------------------------------------------------------------------------------------------------
+9. REPORTING, CODE AND DATA
+---------------------------------------------------------------------------------------------------------
+CLAIM 2024 checklist; IEEE conference format; figures with lettering of at least 8 pt at print size. Code,
+protocol, split files, per-image scores (no images) and run summaries in a public repository with a Zenodo
+release before submission. Software versions and a dependency list are recorded in every run summary.
+The external sets and BUSI are cited with their licenses; no image is redistributed.
+
+---------------------------------------------------------------------------------------------------------
+Deviations
+---------------------------------------------------------------------------------------------------------
+(none yet)
