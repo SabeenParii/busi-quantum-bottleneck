@@ -455,6 +455,8 @@ def gradient_share(model, x, y, n_batches=4):
     ids = {id(v) for v in blk.trainable_weights}
     num = den = 0.0
     for i in range(n_batches):
+        if i * 16 >= len(x):          # small training sets (10% subset: 28 images) have fewer than n_batches batches
+            break
         xb, yb = to_float(x[i * 16:(i + 1) * 16], y[i * 16:(i + 1) * 16])
         with tf.GradientTape() as tape:
             loss = bce_dice(yb, model(xb, training=False))
