@@ -140,8 +140,8 @@ def one_run(r, prep, out_root, selection=None, session="A", max_epochs=None):
     for _ in range(20):
         _ = model(one, training=False)
     summary["infer_ms_per_image"] = (time.time() - t0) / 20 * 1000
-    # ---- external sets and normals (plan A only)
-    if r["plan"] == "A":
+    # ---- external sets and normals (plans A and C; protocol version 1.2)
+    if r["plan"] in ("A", "C"):
         for nm in ("busbra", "breast"):
             fp = os.path.join(prep, f"{nm}.npz")
             if os.path.exists(fp):

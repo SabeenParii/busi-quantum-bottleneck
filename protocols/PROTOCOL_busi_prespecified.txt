@@ -2,9 +2,9 @@ PRESPECIFIED PROTOCOL
 Quantum, product-state and quantum-inspired bottlenecks for breast ultrasound lesion segmentation:
 qubit count, limited training data and a bottleneck audit (BUSI, with external testing on BUS-BRA and BrEaST)
 
-Version 1.1 (14 November 2026). Version 1.0 was written before any image of BUSI, BUS-BRA or BrEaST was loaded
-by the study code and before any training run; version 1.1 changes only the number of seeds and the run order
-(see Deviations) and was committed before the first main run. The file is committed to the project repository; the commit time stamp is the time of
+Version 1.2 (15 November 2026). Version 1.0 was written before any image of BUSI, BUS-BRA or BrEaST was loaded
+by the study code and before any training run; versions 1.1 and 1.2 change only the number of seeds, the run order
+and the external evaluation of plan C (see Deviations) and were committed before the first main run. The file is committed to the project repository; the commit time stamp is the time of
 prespecification. Changes after that commit are recorded under "Deviations" with date and reason.
 
 Target venue: 3rd IEEE International Conference on Cognitive Computing in Engineering, Communications,
@@ -149,7 +149,8 @@ Threshold 0.5 on the sigmoid output. Per-image Dice (primary metric; an image wi
 non-empty mask has Dice 0), IoU, precision, recall, 95th-percentile Hausdorff distance (HD95, pixels at 256 x 256;
 undefined for empty predictions, which are counted separately), empty-prediction rate. Trainable parameters,
 bottleneck parameters, training time and inference time per image (batch 1, same GPU type) are recorded.
-External sets: every run of plan A is evaluated on BUS-BRA and BrEaST.
+External sets: every run of plans A and C (version 1.2) is evaluated on BUS-BRA and BrEaST, and on the cleaned
+BUSI normal images.
 
 ---------------------------------------------------------------------------------------------------------
 6. BOTTLENECK AUDIT (every run of plans A and B; the same procedure is reported as a reusable tool)
@@ -187,7 +188,8 @@ difference the design could detect, and per-seed and leave-one-seed-out estimate
 7.3 F3 limited data (BUSI, n = 4), one family per fraction: q4 - cl4, tr4 - cl4, q4 - full, tr4 - full.
 7.4 F4 qubit count: q - qp and q - tr at n = 2 and n = 8 (four contrasts); model levels for all n (descriptive);
     the change of q - qp and q - tr between n = 2, 4 and 8 is descriptive.
-7.5 Secondary, external sets: F1 and F2 contrasts on BUS-BRA and on BrEaST (separate families per set).
+7.5 Secondary, external sets: F1 and F2 contrasts on BUS-BRA and on BrEaST (separate families per set);
+    (version 1.2) F3 contrasts on BUS-BRA and on BrEaST (one family per fraction and set).
 7.6 Secondary: on cleaned BUSI normal images, rate of non-empty predictions (false-positive images) per model, n = 4.
 7.7 Sensitivity: F1 and F2 without the images listed with annotations in the region of interest; F1 by class
     (benign, malignant), descriptive.
@@ -224,3 +226,8 @@ Deviations
    two-wave run order and the 15 December 2026 cutoff above. No result of this study was available. Data
    preparation (Section 2) and the self-tests of the training code had been run; they produce no Dice value of
    any model on BUSI.
+2. 15 November 2026, version 1.2, before any main run (plans A, B, C), while the selection runs (fold 0, seed 100,
+   validation loss only) were in progress: plan C runs are also evaluated on BUS-BRA, BrEaST and the BUSI normal
+   images, and the F3 contrasts are added as secondary analyses on the external sets (7.5). Training, model
+   selection and all primary analyses are unchanged. Reason: whether a bottleneck trained on little data
+   generalises to other hospitals is part of the limited-data question; the cost is prediction only.
