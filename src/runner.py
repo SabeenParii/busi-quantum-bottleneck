@@ -121,7 +121,7 @@ def one_run(r, prep, out_root, selection=None, session="A"):
     # ---- train
     info = qbus.fit(model, X[tr], Y[tr], X[va], Y[va], seed=r["seed"],
                     max_epochs=80 if r["plan"] == "SEL" else None, log=os.path.join(d, "history.csv"))
-    summary = dict(**r, run_id=rid, k=k, init_max_abs_diff=init_diff, session=session, **info, **qbus.count_params(model),
+    summary = dict(**{a: b for a, b in r.items() if a != "k"}, run_id=rid, k=k, init_max_abs_diff=init_diff, session=session, **info, **qbus.count_params(model),
                    env=qbus.env_info())
     if r["plan"] == "SEL":
         _finish(d, summary)
