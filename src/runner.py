@@ -13,6 +13,7 @@ FOLDS = range(5)
 FACTORS = (1, 10, 100)
 
 
+PROTOCOL = "1.2"
 SEEDS = (0, 1, 2, 3, 4)            # protocol version 1.1
 WAVES = ((0, 1, 2), (3, 4))
 
