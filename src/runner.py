@@ -56,8 +56,11 @@ def run_id(r):
     return rid
 
 
-def claim(out_root, rid, session):
-    """Atomic lock: returns True if this session may run `rid` (not done, not locked by a live session)."""
+def claim(out_root, rid, session, settle=8):
+    """Lock file on Drive: returns True if this session may run `rid` (not done, not locked by a live session).
+    Writes a lock with a unique token, waits `settle` seconds and reads it back, so that two sessions that
+    claim the same run at the same moment do not both run it (the later writer wins; the other backs off)."""
+    import uuid
     d = os.path.join(out_root, rid)
     if os.path.exists(os.path.join(d, "summary.json")):
         return False
@@ -67,9 +70,20 @@ def claim(out_root, rid, session):
         age = time.time() - os.path.getmtime(lock)
         if age < 6 * 3600:      # a lock older than 6 h is considered stale (session died)
             return False
+    token = f"{session} {socket.gethostname()} {uuid.uuid4().hex} {time.strftime('%Y-%m-%d %H:%M:%S')}\n"
     with open(lock, "w") as f:
-        f.write(f"{session} {socket.gethostname()} {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
-    return True
+        f.write(token)
+    time.sleep(settle)
+    try:
+        with open(lock) as f:
+            return f.read() == token
+    except OSError:
+        return False
+
+
+def ordered(runs, session):
+    """Session A works through a list from the start, session B from the end, so that two sessions meet only once."""
+    return list(reversed(runs)) if str(session).upper() == "B" else list(runs)
 
 
 def load_split(prep, fold, frac, seed_subset=2027):
