@@ -99,7 +99,7 @@ def load_split(prep, fold, frac, seed_subset=2027):
     return train, val, test, m
 
 
-def one_run(r, prep, out_root, selection=None, session="A"):
+def one_run(r, prep, out_root, selection=None, session="A", max_epochs=None):
     rid = run_id(r)
     d = os.path.join(out_root, rid)
     os.makedirs(d, exist_ok=True)
@@ -120,7 +120,7 @@ def one_run(r, prep, out_root, selection=None, session="A"):
     grad0 = qbus.gradient_share(model, X[tr], Y[tr])
     # ---- train
     info = qbus.fit(model, X[tr], Y[tr], X[va], Y[va], seed=r["seed"],
-                    max_epochs=80 if r["plan"] == "SEL" else None, log=os.path.join(d, "history.csv"))
+                    max_epochs=max_epochs or (80 if r["plan"] == "SEL" else None), log=os.path.join(d, "history.csv"))
     summary = dict(**{a: b for a, b in r.items() if a != "k"}, run_id=rid, k=k, init_max_abs_diff=init_diff, session=session, **info, **qbus.count_params(model),
                    env=qbus.env_info())
     if r["plan"] == "SEL":
