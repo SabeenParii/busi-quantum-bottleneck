@@ -2,8 +2,9 @@ PRESPECIFIED PROTOCOL
 Quantum, product-state and quantum-inspired bottlenecks for breast ultrasound lesion segmentation:
 qubit count, limited training data and a bottleneck audit (BUSI, with external testing on BUS-BRA and BrEaST)
 
-Version 1.0. Written before any image of BUSI, BUS-BRA or BrEaST was loaded by the study code and before
-any training run. The file is committed to the project repository; the commit time stamp is the time of
+Version 1.1 (14 November 2026). Version 1.0 was written before any image of BUSI, BUS-BRA or BrEaST was loaded
+by the study code and before any training run; version 1.1 changes only the number of seeds and the run order
+(see Deviations) and was committed before the first main run. The file is committed to the project repository; the commit time stamp is the time of
 prespecification. Changes after that commit are recorded under "Deviations" with date and reason.
 
 Target venue: 3rd IEEE International Conference on Cognitive Computing in Engineering, Communications,
@@ -125,17 +126,21 @@ k in {1, 10, 100} is selected separately for each of Q, Qp, S, Tr and Cl and eac
 loss in one selection run per factor (fold 0, seed 100, full training data, at most 80 epochs, same settings
 otherwise). Seed 100 is not an estimation seed, so selection and estimation do not share a seed. The selected
 factors are recorded before the main runs and also used for the limited-data runs.
-Seeds: 0, 1, 2 for the primary, efficiency and qubit-count runs; 0, 1 for the limited-data runs.
+Seeds (version 1.1): 0, 1, 2, 3, 4 in all three plans.
 Run plan (main):
-  A  n = 4, full data: q4, qp4, s4, tr4, cl4, id4, full, unet                 8 x 5 folds x 3 seeds = 120
-  B  n = 2 and 8, full data: q, qp, s, tr, cl                                10 x 5 folds x 3 seeds = 150
-  C  n = 4, fractions 10%, 25%, 50%: q4, tr4, cl4, full                     12 x 5 folds x 2 seeds = 120
+  A  n = 4, full data: q4, qp4, s4, tr4, cl4, id4, full, unet                 8 x 5 folds x 5 seeds = 200
+  B  n = 2 and 8, full data: q, qp, s, tr, cl                                10 x 5 folds x 5 seeds = 250
+  C  n = 4, fractions 10%, 25%, 50%: q4, tr4, cl4, full                     12 x 5 folds x 5 seeds = 300
   Selection runs: 5 blocks x 3 n x 3 factors = 45 (fold 0, seed 100, at most 80 epochs).
-Compute rule: the selection runs give the time per epoch of every model. The projected total of the main runs
-(time per epoch x 1.5 x the mean number of epochs of the selection runs, per model) decides the plan: if it exceeds
-80 GPU-hours, then, in this order, (1) plan C uses seed 0 only, (2) plan B uses seeds 0 and 1. The decision is
-recorded (plan_decision.json) before the first main run. Runs are distributed over Colab sessions with lock files; a run that
-fails is restarted from scratch with the same seed; no run is discarded for its result.
+Run order and stopping rule (version 1.1): the main runs are made in two waves. Wave 1 = seeds 0, 1, 2 of plans A,
+then B, then C; wave 2 = seeds 3, 4 of plans A, then B, then C. On 15 December 2026 (cutoff, fixed now and
+independent of any result) the runs stop. For each plan, the analysis uses every seed that is complete for all
+models, folds (and fractions) of that plan; an incomplete seed is not analysed and is reported as not run. If wave 1
+of a plan is incomplete at the cutoff, the complete seeds of that plan are analysed and the shortfall is reported.
+The selection runs give the time per epoch of every model; the projected GPU-hours per plan (time per epoch x 1.5
+x the mean number of epochs of the selection runs) are recorded with the selected factors in plan_decision.json
+before the first main run, for reporting only. Runs are distributed over Colab sessions with lock files; a run
+that fails is restarted from scratch with the same seed; no run is discarded for its result.
 
 ---------------------------------------------------------------------------------------------------------
 5. EVALUATION
@@ -213,4 +218,9 @@ The external sets and BUSI are cited with their licenses; no image is redistribu
 ---------------------------------------------------------------------------------------------------------
 Deviations
 ---------------------------------------------------------------------------------------------------------
-(none yet)
+1. 14 November 2026, version 1.1, before any main run (plans A, B, C) and before any selection run had finished:
+   seeds increased from 0-2 (plans A, B) and 0-1 (plan C) to 0-4 in all plans, because between-seed variation
+   decided a conclusion in our companion study (three versus five seeds); the 80 GPU-hour rule is replaced by the
+   two-wave run order and the 15 December 2026 cutoff above. No result of this study was available. Data
+   preparation (Section 2) and the self-tests of the training code had been run; they produce no Dice value of
+   any model on BUSI.

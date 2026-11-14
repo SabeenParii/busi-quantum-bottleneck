@@ -13,22 +13,26 @@ FOLDS = range(5)
 FACTORS = (1, 10, 100)
 
 
-def run_list(plan):
+SEEDS = (0, 1, 2, 3, 4)            # protocol version 1.1
+WAVES = ((0, 1, 2), (3, 4))
+
+
+def run_list(plan, seeds=SEEDS):
     """Main runs of plans A, B, C (protocol Section 4), as dicts. Order: seed, fold, model."""
     runs = []
     if plan == "A":
-        for s in (0, 1, 2):
+        for s in seeds:
             for f in FOLDS:
                 for m in ("q4", "qp4", "s4", "tr4", "cl4", "id4", "full", "unet"):
                     runs.append(dict(plan="A", model=m, fold=f, seed=s, frac=1.0))
     elif plan == "B":
-        for s in (0, 1, 2):
+        for s in seeds:
             for f in FOLDS:
                 for n in (2, 8):
                     for b in ("q", "qp", "s", "tr", "cl"):
                         runs.append(dict(plan="B", model=f"{b}{n}", fold=f, seed=s, frac=1.0))
     elif plan == "C":
-        for s in (0, 1):
+        for s in seeds:
             for f in FOLDS:
                 for p in (0.1, 0.25, 0.5):
                     for m in ("q4", "tr4", "cl4", "full"):
