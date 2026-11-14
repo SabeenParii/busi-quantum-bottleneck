@@ -100,7 +100,7 @@ def tf_ops():
         stack = staticmethod(lambda xs, axis=0: tf.stack(xs, axis=axis))
         cos, sin = staticmethod(tf.cos), staticmethod(tf.sin)
         einsum = staticmethod(tf.einsum)
-        to_complex = staticmethod(lambda a: tf.cast(a, tf.complex64))
+        to_complex = staticmethod(lambda a: tf.complex(tf.cast(a, tf.float32), tf.zeros_like(tf.cast(a, tf.float32))))
         complex = staticmethod(lambda re, im: tf.complex(re, im))
         reshape = staticmethod(lambda a, s: tf.reshape(a, s))
         gather = staticmethod(lambda a, p: tf.gather(a, p, axis=1))
