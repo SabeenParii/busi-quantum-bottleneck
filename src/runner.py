@@ -100,7 +100,17 @@ def load_split(prep, fold, frac, seed_subset=2027):
     return train, val, test, m
 
 
+def free_memory():
+    """Release the models of earlier runs before building a new one. Without this, GPU memory accumulates over
+    tens of runs in one session and cuDNN can fail to allocate its workspace (seen on a T4 at the 49th run).
+    It does not change any result: every run builds its model after set_seeds() from the same initial state."""
+    import gc
+    qbus.keras.backend.clear_session()
+    gc.collect()
+
+
 def one_run(r, prep, out_root, selection=None, session="A", max_epochs=None):
+    free_memory()
     rid = run_id(r)
     d = os.path.join(out_root, rid)
     os.makedirs(d, exist_ok=True)
@@ -179,6 +189,8 @@ def one_run(r, prep, out_root, selection=None, session="A", max_epochs=None):
         np.savez(os.path.join(d, "block_weights.npz"), **{f"init_{a}": b for a, b in blk_init.items()},
                  **{f"final_{a}": b for a, b in blk.effective().items()})
     _finish(d, summary)
+    del model
+    free_memory()
     return summary
 
 
