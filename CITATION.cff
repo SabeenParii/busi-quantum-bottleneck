@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite them as below."
+title: "busi-quantum-bottleneck: Protocol, code and results of a prespecified comparison of quantum and classical bottlenecks for breast ultrasound segmentation"
+authors:
+  - family-names: Parii
+    given-names: Sabeen
+    email: sabeenparii@gmail.com
+    orcid: "https://orcid.org/0000-0002-2272-6115"
+    affiliation: "Wuhan University of Technology"
+version: 1.0.0
+date-released: 2026-11-25
+doi: 10.5281/zenodo.24536631
+license: MIT
+repository-code: "https://github.com/SabeenParii/busi-quantum-bottleneck"
+keywords:
+  - hybrid quantum-classical neural networks
+  - variational quantum circuits
+  - classical surrogates
+  - U-Net
+  - breast ultrasound
+  - medical image segmentation
+  - equivalence testing
