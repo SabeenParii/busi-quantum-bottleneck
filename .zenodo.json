@@ -1,0 +1,22 @@
+{
+  "title": "busi-quantum-bottleneck: Protocol, code and results of a prespecified comparison of quantum and classical bottlenecks for breast ultrasound segmentation",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Parii, Sabeen",
+      "affiliation": "Wuhan University of Technology",
+      "orcid": "0000-0002-2272-6115"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "hybrid quantum-classical neural networks",
+    "variational quantum circuits",
+    "classical surrogates",
+    "U-Net",
+    "breast ultrasound",
+    "medical image segmentation",
+    "equivalence testing"
+  ]
+}
