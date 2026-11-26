@@ -1,0 +1,34 @@
+Addendum to PROTOCOL_busi_prespecified.txt (written 27 November 2026, after all main runs and analyses)
+---------------------------------------------------------------------------------------------------------
+The protocol file itself is unchanged since version 1.2 (commit 2dfb883, 15 November 2026). This addendum lists
+what happened after that commit, so that the record is complete. Nothing here changes the primary analysis.
+
+A. Publication target and related work
+   The protocol names a conference as the target venue. The article was later prepared for Artificial Intelligence
+   in Medicine. The two related studies named as P1 and P2 are under review at the IEEE Journal of Biomedical and
+   Health Informatics (P1) and will be submitted to Neurocomputing (P2). No image, run or result of P1 or P2 is used.
+
+B. Deviations
+   1. Initialization check. The protocol asked that the shared initial weights of all models of a seed be identical.
+      The check was implemented with a tolerance for float32 rounding; the largest difference found before training
+      was 2.4e-7 (column init_max_abs_diff in results/data/summaries.csv).
+   2. Minimum number of epochs in 23 plan C runs. In 23 runs of plan C with seeds 3 or 4 (21 with 10% and 2 with 25%
+      of the training images), a test setting left in the training notebook removed the minimum of 30 epochs, and
+      training stopped after 21 to 28 epochs. The runs were retrained with the protocol settings (notebook
+      06_min_epochs.ipynb); the retrained runs are part of results/data and of every reported result. The original
+      runs are kept in results/original23, and Supplementary Table S12 compares the two. With the original runs no
+      claim and no BUSI verdict would differ; two secondary BrEaST verdicts at 10% would be inconclusive instead of
+      equivalent. The first epochs of the retrained runs repeated the original runs exactly.
+
+C. Analyses outside the protocol (exploratory, reported as such)
+   1. Loss of Dice from BUSI to each external set, compared between models (analysis/gap.py, Supplementary Table S4).
+   2. Simulated hardware noise and finite shots for the 25 Q4 models of plan A (src/noise_run.py, analysis/noise.py,
+      Supplementary Table S5).
+   3. Retraining of Qp4 and Q8 with k = 100 (notebook 05_equal_k.ipynb, analysis/equal_k.py, Supplementary Table S11).
+   4. Intervals from the five seed means alone for F1 (Supplementary Table S10).
+   5. Comparison of the reported results with the original 23 runs (analysis/min_epochs.py, Supplementary Table S12).
+
+D. Prespecified outputs not reported in the article
+   Leave-one-seed-out estimates (Section 7), the gradient share at the first epoch (Section 6.3) and F1 contrasts by
+   class (Section 7) are not reported in the article. They can be computed from the per-run and per-image files in
+   results/data. Levels by class are reported in Supplementary Table S8.

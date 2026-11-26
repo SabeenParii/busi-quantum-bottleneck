@@ -1,10 +1,10 @@
 # busi-quantum-bottleneck
 
-Protocol, code and results for the study **"Does a quantum bottleneck help breast ultrasound lesion segmentation? A prespecified comparison with classical layers in the same slot"** (S. Parii, A. Tujammal, A. Iqbal, R. Ashraf, F. Aadil; submitted to *Artificial Intelligence in Medicine*).
+Protocol, code and results for the study **"Does a quantum bottleneck help breast ultrasound lesion segmentation? A prespecified comparison with classical layers at the same position in the network"** (S. Parii, A. Tujammal, A. Iqbal, R. Ashraf, F. Aadil; submitted to *Artificial Intelligence in Medicine*).
 
-A simulated circuit with four qubits in the bottleneck slot of a U-Net is compared, in the same slot and from the same initial weights, with five classical blocks: the same circuit without CNOT gates (Qp), a layer that spans the full Fourier series of the circuit (S), a trigonometric layer (Tr), a dense layer (Cl) and an identity mapping (Id). The analysis plan was fixed before the first training run (`protocols/PROTOCOL_busi_prespecified.txt`).
+A simulated circuit with four qubits in the bottleneck slot of a U-Net is compared, in the same slot and from the same initial weights, with five controls: the same circuit without CNOT gates (Qp), a layer that spans the full Fourier series of the circuit (S), a trigonometric layer (Tr), a dense layer (Cl) and an identity mapping (Id). The analysis plan was fixed before the first main run (`protocols/PROTOCOL_busi_prespecified.txt`); later deviations and analyses outside the protocol are listed in `protocols/ADDENDUM_2026-11-27.txt`.
 
-Archived version: Zenodo, https://doi.org/10.5281/zenodo.24536631
+Archived on Zenodo (all versions): https://doi.org/10.5281/zenodo.24536630; version 1.0.0: https://doi.org/10.5281/zenodo.24536631
 
 No image data are stored in this repository. BUSI, BUS-BRA and BrEaST are downloaded from their original sources (protocol, Section 2; manuscript, Data availability).
 
@@ -12,15 +12,17 @@ No image data are stored in this repository. BUSI, BUS-BRA and BrEaST are downlo
 
 | Folder | Content |
 |---|---|
-| `protocols/` | The prespecified protocol (data cleaning, folds, models, training, run plans, metrics, statistics, claims) |
+| `protocols/` | The prespecified protocol (data cleaning, folds, models, training, run plans, metrics, statistics, claims) and a dated addendum with deviations and exploratory analyses |
 | `src/` | `qsim.py` state-vector simulator; `qbus.py` models, blocks, training and bottleneck audit; `prep.py` data preparation; `runner.py` run list and Drive lock files; `analysis.py` statistics of protocol Section 7; `qnoise.py` density-matrix noise model; `noise_run.py` noise test; `qual_run.py` qualitative examples |
 | `tests/` | Checks of the simulator and of the noise model against an independent implementation |
-| `notebooks/` | Google Colab notebooks: `00_data_prep`, `01_train` and `01_train_B` (training, two sessions), `02_collect`, `02b_split_busbra`, `03_noise` (exploratory noise test), `04_qualitative` (examples of Fig. 6), `05_equal_k` (exploratory rerun of Qp4 and Q8 with k = 100, run in two sessions) |
+| `notebooks/` | Google Colab notebooks: `00_data_prep`, `01_train` and `01_train_B` (training, two sessions), `02_collect`, `02b_split_busbra`, `03_noise` (exploratory noise test), `04_qualitative` (examples of Fig. 6), `05_equal_k` (exploratory rerun of Qp4 and Q8 with k = 100, run in two sessions), `06_min_epochs` (retraining of the 23 plan C runs that stopped before epoch 30) |
 | `analysis/` | Scripts that turn the result files into the tables and figures of the manuscript |
 | `results/data/` | Files written by `02_collect`: split of every BUSI image (`busi_manifest.csv`), summary of every run (`summaries.csv`), Dice of every test image in every run (`test_busi`, `test_busbra`, `test_breast`), normal images, code replacement, finite shots, selected learning rate factors (`plan_decision.json`) |
 | `results/stats/` | Statistics computed from `results/data/` |
 | `results/noise/` | Exploratory noise test: Dice of every BUSI image for every run, noise level and number of shots |
 | `results/qualitative/` | Check of the seven retrained models used for Fig. 6 |
+| `results/min30/` | Output of notebook 06: the 23 plan C runs retrained with the protocol minimum of 30 epochs (these runs are also merged into `results/data/` and used in every result) |
+| `results/original23/` | The original versions of these 23 runs, which stopped after 21 to 28 epochs, kept for Supplementary Table S12 |
 | `results/k100/` | Exploratory rerun with equal factors: per-run summaries and per-image Dice of Qp4 and Q8 with k = 100 |
 
 ## Reproducing the tables and figures
@@ -30,6 +32,7 @@ python src/analysis.py results/data results/stats            # model levels, all
 python analysis/gap.py results/data results/stats/gap_contrasts.csv          # exploratory gap contrasts
 python analysis/noise.py results/noise/noise_q4.csv.gz results/stats/noise_contrasts.csv   # exploratory noise test
 python analysis/equal_k.py results/data results/k100 results/stats/equal_k_contrasts.csv   # exploratory rerun with equal factors
+python analysis/min_epochs.py results/data results/original23 results/stats/min30   # Supplementary Table S12
 RESULTS=results/stats/ DECISION=results/data/plan_decision.json OUT=out python analysis/tabs2.py
 RESULTS=results/stats/ OUT=out python analysis/figs2.py
 ```
@@ -45,6 +48,7 @@ RESULTS=results/stats/ OUT=out python analysis/figs2.py
 | Supplementary Table S5 (noise test) | `results/stats/noise_contrasts.csv`, `analysis/noise.py` |
 | Supplementary Tables S6 to S10 | `analysis/tabs2.py` from `results/stats/` and `results/data/` |
 | Supplementary Table S11 (equal factors) | `results/stats/equal_k_contrasts.csv`, `results/stats/equal_k_levels.csv`, `analysis/equal_k.py` |
+| Supplementary Table S12 (reported F3 against the original 23 runs) | `results/stats/min30/`, `results/original23/`, `analysis/min_epochs.py` |
 | Normal images, costs, classes, sensitivity analysis | `normals_fp.csv`, `costs.csv`, `by_class_planA.csv`, `contrasts_no_annotated.csv` in `results/stats/` |
 
 Running `src/analysis.py` on `results/data` reproduces every file in `results/stats/` exactly.

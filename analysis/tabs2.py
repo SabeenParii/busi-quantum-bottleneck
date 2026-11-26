@@ -23,7 +23,10 @@ def nm(m):
     b = m.rstrip('248'); return f'{NAME[b]}$_{m[len(b):]}$'
 
 
-def f3(x): return f'{x:.3f}'.replace('-', '$-$')
+def f3(x):
+    # four decimals where three would hide the sign or the position relative to the margin of 0.02
+    d = 4 if (x != 0 and abs(x) < 0.0005) or abs(abs(x) - 0.02) < 0.0005 else 3
+    return f'{x:.{d}f}'.replace('-', '$-$')
 def ci(lo, hi): return f'{f3(lo)} to {f3(hi)}'
 def pf(p): return '$<$0.001' if p < 0.001 else f'{p:.3f}'
 def pair(c): a, b = [x.strip() for x in c.split('-')]; return f'{nm(a)} vs {nm(b)}'
@@ -46,7 +49,7 @@ for m in order:
     if m == 'id4': lines.append(r'\midrule')
 write('tab_levels.tex', r'''\begin{table}[!t]
 \centering
-\caption{Mean Dice of the eight models with four values in the slot and all training images (plan A, five seeds). The 95\% intervals are given in Supplementary Table S1.}\label{tab:levels}
+\caption{Mean Dice of the six slot models with four values, Full and the U-Net, with all training images (plan A, five seeds). The 95\% intervals are given in Supplementary Table S1.}\label{tab:levels}
 \footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lrrrrrrrrrr@{}}
 \toprule
@@ -74,7 +77,7 @@ for ds in ('busi', 'busbra', 'breast'):
     if ds != 'breast': lines.append(r'\addlinespace')
 write('tab_contrasts.tex', r'''\begin{table}[!t]
 \centering
-\caption{Primary (F1) and efficiency (F2) contrasts. Difference, mean difference in Dice (first model minus second). $p$, Holm adjusted within each family and dataset.}\label{tab:contrasts}
+\caption{Primary (F1) and efficiency (F2) contrasts. Difference, mean difference in Dice (first model minus second). $p$, Holm-adjusted within each family and dataset.}\label{tab:contrasts}
 \footnotesize\setlength{\tabcolsep}{5pt}
 \begin{tabular}{@{}llrcrl@{}}
 \toprule
@@ -84,7 +87,7 @@ Family & Contrast & Difference & 95\% interval & $p$ & Verdict \\
 \bottomrule
 \end{tabular}
 
-\smallskip\parbox{\linewidth}{\scriptsize Equivalent, 90\% interval inside $\pm0.02$. Noninferior, one sided test against $-0.02$. Higher or Lower, Holm adjusted $p<0.05$. Inconclusive, none of these.}
+\smallskip\parbox{\linewidth}{\scriptsize Equivalent, 90\% interval inside $\pm0.02$. Noninferior, one-sided test against $-0.02$. Higher or Lower, Holm-adjusted $p<0.05$. Inconclusive, none of these.}
 \end{table}
 ''')
 
@@ -152,7 +155,7 @@ for ds in ('busi', 'busbra', 'breast'):
         if t.empty: continue
         for _, r in t.iterrows():
             body.append(f"{DSN[ds]} & {plan} & {int(frac * 100)} & {nm(r.model)} & {r.dice:.3f} & {ci(r.ci95_lo, r.ci95_hi)} & {r.iou:.3f} & {r.hd95:.1f} & {r.seed_sd:.3f} & {100 * r.empty_rate:.1f} \\\\")
-s1 = longtab('stab:levels', 'Mean Dice of every model with 95\\% interval, intersection over union (IoU), 95th percentile Hausdorff distance in pixels (HD95, images with a prediction), standard deviation of the seed means and share of empty predictions.',
+s1 = longtab('stab:levels', 'Mean Dice of every model with 95\\% interval, intersection over union (IoU), 95th-percentile Hausdorff distance in pixels (HD95, images with a prediction), standard deviation of the seed means and share of empty predictions. Plan C includes the 23 runs retrained with the minimum of 30 epochs (Table S12).',
              r'Dataset & Plan & Data (\%) & Model & Dice & 95\% interval & IoU & HD95 & SD seeds & Empty (\%)', body, '@{}lllcrcrrrr@{}')
 
 def famlab(f):
@@ -166,7 +169,7 @@ body = []
 for fam in C.family.unique():
     for _, r in C[C.family == fam].iterrows():
         body.append(f"{famlab(fam)} & {pair(r.contrast)} & {f3(r['diff'])} & {ci(r.ci95_lo, r.ci95_hi)} & {ci(r.ci90_lo, r.ci90_hi)} & {pf(r.p)} & {pf(r.p_holm)} & {ver(r.verdict)} \\\\")
-s2 = longtab('stab:contrasts', 'All prespecified contrasts on the three datasets. Raw and Holm adjusted $p$ values.',
+s2 = longtab('stab:contrasts', 'All prespecified contrasts on the three datasets. Raw and Holm-adjusted $p$ values. Plan C includes the 23 runs retrained with the minimum of 30 epochs (Table S12).',
              r'Family & Contrast & Difference & 95\% interval & 90\% interval & $p$ & Holm $p$ & Verdict', body, '@{}llrccrrl@{}')
 
 body = []
@@ -187,7 +190,7 @@ D = os.environ.get('DATA', 'results/data/')
 claims = [
     ('C1', 'Efficiency', 'A slot of four values with Tr$_4$ or Q$_4$ is noninferior to Full (and to U-Net)', 'F2 noninferiority', 'Held against Full, not against U-Net'),
     ('C2', 'Limited data', 'With $p$\\% of the training images Q$_4$ or Tr$_4$ scores higher than Cl$_4$ or Full', 'F3, Holm $p<0.05$, positive', 'Held only against Full at 50\\%'),
-    ('C3', 'Entanglement', 'The CNOT gates add a measurable benefit, or none', 'F1 Q$_4$ vs Qp$_4$: higher, or equivalent', 'No benefit: equivalent'),
+    ('C3', 'Entanglement', 'The CNOT gates add a measurable benefit, or none', 'F1 Q$_4$ vs Qp$_4$: higher, or equivalent', 'No benefit detected: equivalent with the selected factors, inconclusive with equal factors (Table S11)'),
     ('C4', 'Function class', 'A classical surrogate of the Fourier series of the circuit matches the circuit', 'F1 Q$_4$ vs S$_4$ equivalent and audit $R^2\\ge0.99$', 'Held'),
     ('C5', 'Audit', 'The networks use (or do not use) their bottleneck code', 'Mean drop $\\ge0.02$ Dice, 95\\% interval excludes 0', 'Held: every slot model uses its code'),
 ]
@@ -237,7 +240,7 @@ if os.path.exists(EK):
         return f'{f(a)} $-$ {f(b)}'
     body = [f"{DSN.get(r.dataset, r.dataset)} & {pr(r.contrast)} & {f3(r['diff'])} & {ci(r.ci95_lo, r.ci95_hi)} & {ci(r.ci90_lo, r.ci90_hi)} & {pf(r.p_holm)} & {ver(r.verdict)} \\\\" for _, r in E.iterrows()]
     body += [r'\midrule'] + [f"{nm(r.model.split('_')[0])} ($k=100$) & {int(r.runs)} runs & Dice {r.dice:.3f} & change {r.change_block:.3f} & drops {r.drop_const:.3f}, {r.drop_swap:.3f} & MW {r.mw:.2f} & $R^2$ {r.r2:.4f} \\\\" for _, r in EL.iterrows()]
-    s11 = longtab('stab:equalk', 'Exploratory analysis with equal factors, not in the protocol: Qp$_4$ and Q$_8$ retrained with $k=100$ in all runs of plans A and B. Families F1k (BUSI, with Q$_4$ against Qp$_4$ at $k=1$ for reference), F1k on each external set, and F4k; Holm correction within each family. Lower part: BUSI Dice, relative weight change, Dice drops for constant and swapped codes, Meyer--Wallach measure and surrogate $R^2$.',
+    s11 = longtab('stab:equalk', 'Exploratory analysis with equal factors, not in the protocol: Qp$_4$ and Q$_8$ retrained with $k=100$ in all runs of plans A and B. Families F1k (BUSI, with Q$_4$ against Qp$_4$ at $k=1$ for reference), F1k on each external set, and F4k; Holm correction within each family. Lower part: BUSI Dice, relative weight change, Dice drops for constant and swapped codes, Meyer--Wallach measure and surrogate $R^2$. The reference row for Q$_4$ against Qp$_4$ belongs to a different family and bootstrap draw than in Table 4 of the main text, so its interval and $p$ value differ slightly.',
                   r'Dataset & Contrast & Difference & 95\% interval & 90\% interval & Holm $p$ & Verdict', body, '@{}llrcccl@{}')
 write('supp_extra.tex', s6 + '\n' + s7 + '\n' + s8 + '\n' + s9 + '\n' + s10 + '\n' + s11)
 write('supp_tables.tex', s1 + '\n' + s2 + '\n' + s3 + '\n' + s4)
