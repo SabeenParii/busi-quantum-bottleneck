@@ -3,7 +3,7 @@ Dice of the trained Q4 models of plan A (25 runs) under simulated hardware noise
 same models evaluated exactly. Levels (src/qnoise.LEVELS): depolarizing p1 after single-qubit gates, two-qubit
 depolarizing p2 after each CNOT, amplitude damping gamma, readout flip pm. Shots: 1,024, 4,096, 8,192, exact.
 Contrast = condition - (none, exact) on the same images and seeds; crossed bootstrap over BUSI duplicate groups and
-seeds (B = 10,000; generator SeedSequence(2)); equivalence if the 95% CI lies within +-0.02 Dice.
+seeds (B = 10,000; generator SeedSequence(2)); equivalence if the 90% CI lies within +-0.02 Dice, as in Eq. (2).
 
 Usage: python analysis/noise.py analysis/noise_q4.csv.gz analysis/noise_contrasts.csv
 """
@@ -40,8 +40,9 @@ def main(src, out):
             bt.append(np.einsum("bs,sc,bc->b", V, S, W) / (V.sum(1) * (W @ N)))
         bt = np.concatenate(bt)
         lo, hi = np.percentile(bt, [2.5, 97.5])
-        rows.append(dict(level=lev, shots=sh, dice=t.dice.mean(), diff=est, ci95_lo=lo, ci95_hi=hi,
-                         equivalent=bool(-0.02 < lo and hi < 0.02), images=int(N.sum()), seeds=len(seeds)))
+        lo90, hi90 = np.percentile(bt, [5, 95])
+        rows.append(dict(level=lev, shots=sh, dice=t.dice.mean(), diff=est, ci95_lo=lo, ci95_hi=hi, ci90_lo=lo90, ci90_hi=hi90,
+                         equivalent=bool(-0.02 < lo90 and hi90 < 0.02), images=int(N.sum()), seeds=len(seeds)))
     r = pd.DataFrame(rows)
     order = {"none": 0, "low": 1, "mid": 2, "high": 3}
     r = r.sort_values(["level", "shots"], key=lambda c: c.map(order) if c.name == "level" else c.map({"1024": 0, "4096": 1, "8192": 2, "exact": 3}))
