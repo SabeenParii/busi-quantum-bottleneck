@@ -42,7 +42,7 @@ lines = []
 for m in order:
     g = lambda ds: L[(L.dataset == ds) & (L.model == m) & (L.plan == 'A')].iloc[0]
     k = K[(K.plan == 'A') & (K.model == m)].iloc[0]; fp = N[(N.plan == 'A') & (N.model == m)].iloc[0]
-    cells = [nm(m), str(int(k.block)), f'{k.trainable / 1e6:.2f}', str(dec.get(m, '--'))]
+    cells = [nm(m), (str(int(k.block)) if m not in ('full', 'unet') else '--'), f'{k.trainable / 1e6:.2f}', str(dec.get(m, '--'))]
     cells += [f'{g(ds).dice:.3f}' for ds in ('busi', 'busbra', 'breast')]
     cells += [f"{100 * g('busi').empty_rate:.1f}", f'{100 * fp.fp_rate:.0f}', f'{k.minutes:.0f}', f'{k.infer_ms_per_image:.0f}']
     lines.append(' & '.join(cells) + r' \\')
@@ -55,13 +55,13 @@ write('tab_levels.tex', r'''\begin{table}[!t]
 \toprule
  & \multicolumn{3}{c}{Weights} & \multicolumn{3}{c}{Dice} & \multicolumn{2}{c}{BUSI errors (\%)} & \multicolumn{2}{c}{Cost} \\
 \cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-9}\cmidrule(l){10-11}
-Model & Block & All (M) & $k$ & BUSI & BUS-BRA & BrEaST & Empty & FP & Min & ms \\
+Model & Block & All (M) & $k$ & BUSI & BUS-BRA & BrEaST & Empty & FP & Train & ms \\
 \midrule
 ''' + '\n'.join(lines) + r'''
 \bottomrule
 \end{tabular}
 
-\smallskip\parbox{\linewidth}{\scriptsize $k$, factor of the block learning rate. Empty, lesion images without any predicted pixel. FP, normal images with a predicted lesion. Min, training time per run. ms, inference time per image on a T4 GPU.}
+\smallskip\parbox{\linewidth}{\scriptsize $k$, factor of the block learning rate. Empty, lesion images without any predicted pixel. FP, normal images with a predicted lesion, over the 72 normal images and 25 runs. Train, training time per run in minutes. ms, inference time per image on a T4 GPU.}
 \end{table}
 ''')
 
@@ -70,24 +70,25 @@ rows = [('F1', 'q4 - qp4'), ('F1', 'q4 - s4'), ('F1', 'q4 - tr4'), ('F1', 'q4 - 
         ('F2', 'tr4 - full'), ('F2', 'q4 - full'), ('F2', 'tr4 - unet'), ('F2', 'q4 - unet')]
 lines = []
 for ds in ('busi', 'busbra', 'breast'):
-    lines.append(r'\multicolumn{6}{@{}l}{\textit{' + DSN[ds] + (' (internal)' if ds == 'busi' else ' (external)') + r'}} \\')
+    lines.append(r'\multicolumn{8}{@{}l}{\textit{' + DSN[ds] + (' (internal)' if ds == 'busi' else ' (external)') + r'}} \\')
     for f, c in rows:
         r = C[(C.family == (f if ds == 'busi' else f'{f}_{ds}')) & (C.contrast == c)].iloc[0]
-        lines.append(f"{f} & {pair(c)} & {f3(r['diff'])} & {ci(r.ci95_lo, r.ci95_hi)} & {pf(r.p_holm)} & {ver(r.verdict)} \\\\")
+        pni = pf(r.p_noninf_holm) if f == 'F2' else '--'
+        lines.append(f"{f} & {pair(c)} & {f3(r['diff'])} & {ci(r.ci95_lo, r.ci95_hi)} & {ci(r.ci90_lo, r.ci90_hi)} & {pf(r.p_holm)} & {pni} & {ver(r.verdict)} \\\\")
     if ds != 'breast': lines.append(r'\addlinespace')
 write('tab_contrasts.tex', r'''\begin{table}[!t]
 \centering
-\caption{Primary (F1) and efficiency (F2) contrasts. Difference, mean difference in Dice (first model minus second). $p$, Holm-adjusted within each family and dataset.}\label{tab:contrasts}
-\footnotesize\setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}llrcrl@{}}
+\caption{Primary (F1) and efficiency (F2) contrasts. Difference, mean difference in Dice (first model minus second). $p$, Holm-adjusted within each family and dataset; $p_{\mathrm{NI}}$, Holm-adjusted one-sided noninferiority $p$ value.}\label{tab:contrasts}
+\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}llrccrrl@{}}
 \toprule
-Family & Contrast & Difference & 95\% interval & $p$ & Verdict \\
+Family & Contrast & Difference & 95\% interval & 90\% interval & $p$ & $p_{\mathrm{NI}}$ & Verdict \\
 \midrule
 ''' + '\n'.join(lines) + r'''
 \bottomrule
 \end{tabular}
 
-\smallskip\parbox{\linewidth}{\scriptsize Equivalent, 90\% interval inside $\pm0.02$. Noninferior, one-sided test against $-0.02$. Higher or Lower, Holm-adjusted $p<0.05$. Inconclusive, none of these.}
+\smallskip\parbox{\linewidth}{\scriptsize Equivalent, 90\% interval inside $\pm0.02$, as in the protocol, without adjustment for multiplicity; with adjustment no F1 contrast is equivalent (Supplementary Table S13). Noninferior, $p_{\mathrm{NI}}<0.05$. Higher or Lower, $p<0.05$. Inconclusive, none of these.}
 \end{table}
 ''')
 
@@ -205,7 +206,7 @@ for n in (2, 4, 8):
     for b in ('q', 'qp', 's', 'tr', 'cl'):
         m = f'{b}{n}'
         r = sel.loc[m]
-        body.append(f"{nm(m)} & " + ' & '.join(f'{r[k]:.3f}' for k in (1, 10, 100)) + f" & {dec[m]} \\\\")
+        body.append(f"{nm(m)} & " + ' & '.join(f'{r[k]:.4f}' for k in (1, 10, 100)) + f" & {dec[m]} \\\\")
 s7 = longtab('stab:k', 'Selection of the factor $k$: best validation loss of the single selection run per factor (fold 0, seed 100, at most 80 epochs). The factor with the lowest loss was used in plans A and B, and plan C used the factors of plan A.',
              r'Block & $k=1$ & $k=10$ & $k=100$ & Selected', body, '@{}lrrrr@{}')
 
