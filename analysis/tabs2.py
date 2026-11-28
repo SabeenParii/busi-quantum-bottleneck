@@ -189,9 +189,9 @@ if G is not None:
 # ---- further supplementary tables: claims, factor selection, classes, annotation sensitivity, seed t intervals
 D = os.environ.get('DATA', 'results/data/')
 claims = [
-    ('C1', 'Efficiency', 'A slot of four values with Tr$_4$ or Q$_4$ is noninferior to Full (and to U-Net)', 'F2 noninferiority', 'Held against Full, not against U-Net'),
-    ('C2', 'Limited data', 'With $p$\\% of the training images Q$_4$ or Tr$_4$ scores higher than Cl$_4$ or Full', 'F3, Holm $p<0.05$, positive', 'Held only against Full at 50\\%'),
-    ('C3', 'Entanglement', 'The CNOT gates add a measurable benefit, or none', 'F1 Q$_4$ vs Qp$_4$: higher, or equivalent', 'No benefit detected: equivalent with the selected factors, inconclusive with equal factors (Table S11)'),
+    ('C1', 'Efficiency', 'A slot of four values with Tr$_4$ or Q$_4$ is noninferior to Full (and to U-Net)', 'F2 noninferiority', 'Held against Full on lesion Dice, not against U-Net; Z$_4$ was also noninferior to Full on the external sets (Table S22)'),
+    ('C2', 'Limited data', 'With $p$\\% of the training images Q$_4$ or Tr$_4$ scores higher than Cl$_4$ or Full', 'F3, Holm $p<0.05$, positive', 'Held only against Full: at 50\\% on BUSI, at 25\\% and 50\\% on BUS-BRA and BrEaST'),
+    ('C3', 'Entanglement', 'The CNOT gates add a measurable benefit, or none', 'F1 Q$_4$ vs Qp$_4$: higher, or equivalent', 'Equivalent under the protocol, but Qp$_4$ had $k=1$ and barely trained; inconclusive with equal factors (Tables S11, S21)'),
     ('C4', 'Function class', 'A classical surrogate of the Fourier series of the circuit matches the circuit', 'F1 Q$_4$ vs S$_4$ equivalent and audit $R^2\\ge0.99$', 'Held'),
     ('C5', 'Audit', 'The networks use (or do not use) their bottleneck code', 'Mean drop $\\ge0.02$ Dice, 95\\% interval excludes 0', 'Held: every slot model uses its code'),
 ]

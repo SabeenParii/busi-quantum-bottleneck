@@ -1,0 +1,781 @@
+image,cls,masks,group,reason,annotated,keep
+benign (1),benign,benign (1)_mask.png,benign (1),,1,1
+benign (2),benign,benign (2)_mask.png,benign (2),,1,1
+benign (3),benign,benign (3)_mask.png,benign (3),,1,1
+benign (4),benign,benign (4)_mask.png|benign (4)_mask_1.png,benign (4),,1,1
+benign (5),benign,benign (5)_mask.png,benign (5),,1,1
+benign (6),benign,benign (6)_mask.png,benign (6),,1,1
+benign (7),benign,benign (7)_mask.png,benign (7),,0,1
+benign (8),benign,benign (8)_mask.png,benign (8),,0,1
+benign (9),benign,benign (9)_mask.png,benign (9),,1,1
+benign (10),benign,benign (10)_mask.png,benign (10),,0,1
+benign (11),benign,benign (11)_mask.png,benign (11),,1,1
+benign (12),benign,benign (12)_mask.png,benign (12),,0,1
+benign (13),benign,benign (13)_mask.png,benign (13),,1,1
+benign (14),benign,benign (14)_mask.png,benign (14),,1,1
+benign (15),benign,benign (15)_mask.png,benign (15),,0,1
+benign (16),benign,benign (16)_mask.png,benign (16),,0,1
+benign (17),benign,benign (17)_mask.png,benign (17),,0,1
+benign (18),benign,benign (18)_mask.png,benign (18),,0,1
+benign (19),benign,benign (19)_mask.png,benign (19),,1,1
+benign (20),benign,benign (20)_mask.png,benign (20),,0,1
+benign (21),benign,benign (21)_mask.png,benign (21),,0,1
+benign (22),benign,benign (22)_mask.png,benign (22),,1,1
+benign (23),benign,benign (23)_mask.png,benign (23),,0,1
+benign (24),benign,benign (24)_mask.png,benign (24),,0,1
+benign (25),benign,benign (25)_mask.png|benign (25)_mask_1.png,benign (25),,0,1
+benign (26),benign,benign (26)_mask.png,benign (26),,0,1
+benign (27),benign,benign (27)_mask.png,benign (27),,0,1
+benign (28),benign,benign (28)_mask.png,benign (28),,0,1
+benign (29),benign,benign (29)_mask.png,benign (29),,0,1
+benign (30),benign,benign (30)_mask.png,benign (30),,0,1
+benign (31),benign,benign (31)_mask.png,benign (31),,0,1
+benign (32),benign,benign (32)_mask.png,benign (32),,0,1
+benign (33),benign,benign (33)_mask.png,benign (33),,0,1
+benign (34),benign,benign (34)_mask.png,benign (34),,1,1
+benign (35),benign,benign (35)_mask.png,benign (35),,0,1
+benign (36),benign,benign (36)_mask.png,benign (36),,0,1
+benign (37),benign,benign (37)_mask.png,benign (37),,0,1
+benign (38),benign,benign (38)_mask.png,benign (38),,0,1
+benign (39),benign,benign (39)_mask.png,benign (39),,0,1
+benign (40),benign,benign (40)_mask.png,benign (40),,0,1
+benign (41),benign,benign (41)_mask.png,benign (41),,0,1
+benign (42),benign,benign (42)_mask.png,benign (42),cross-class duplicate,0,0
+benign (43),benign,benign (43)_mask.png,benign (43),,0,1
+benign (44),benign,benign (44)_mask.png,benign (44),,0,1
+benign (45),benign,benign (45)_mask.png,benign (45),,0,1
+benign (46),benign,benign (46)_mask.png,benign (46),,1,1
+benign (47),benign,benign (47)_mask.png,benign (47),,0,1
+benign (48),benign,benign (48)_mask.png,benign (48),,0,1
+benign (49),benign,benign (49)_mask.png,benign (49),,0,1
+benign (50),benign,benign (50)_mask.png,benign (50),,0,1
+benign (51),benign,benign (51)_mask.png,benign (51),,0,1
+benign (52),benign,benign (52)_mask.png,benign (52),,1,1
+benign (53),benign,benign (53)_mask.png,benign (53),,0,1
+benign (54),benign,benign (54)_mask.png|benign (54)_mask_1.png,benign (54),,0,1
+benign (55),benign,benign (55)_mask.png,benign (55),,0,1
+benign (56),benign,benign (56)_mask.png,benign (56),,0,1
+benign (57),benign,benign (57)_mask.png,benign (57),,0,1
+benign (58),benign,benign (58)_mask.png|benign (58)_mask_1.png,benign (58),,0,1
+benign (59),benign,benign (59)_mask.png,benign (59),,0,1
+benign (60),benign,benign (60)_mask.png,benign (60),,1,1
+benign (61),benign,benign (61)_mask.png,benign (61),,0,1
+benign (62),benign,benign (62)_mask.png,benign (62),,0,1
+benign (63),benign,benign (63)_mask.png,benign (63),,0,1
+benign (64),benign,benign (64)_mask.png,benign (64),,1,1
+benign (65),benign,benign (65)_mask.png,benign (65),,0,1
+benign (66),benign,benign (66)_mask.png,benign (66),,0,1
+benign (67),benign,benign (67)_mask.png,benign (67),,0,1
+benign (68),benign,benign (68)_mask.png,benign (68),,0,1
+benign (69),benign,benign (69)_mask.png,benign (69),,0,1
+benign (70),benign,benign (70)_mask.png,benign (70),,0,1
+benign (71),benign,benign (71)_mask.png,benign (71),,0,1
+benign (72),benign,benign (72)_mask.png,benign (72),,0,1
+benign (73),benign,benign (73)_mask.png,benign (73),,0,1
+benign (74),benign,benign (74)_mask.png,benign (74),,0,1
+benign (75),benign,benign (75)_mask.png,benign (75),,0,1
+benign (76),benign,benign (76)_mask.png,benign (76),,0,1
+benign (77),benign,benign (77)_mask.png,benign (77),,0,1
+benign (78),benign,benign (78)_mask.png,benign (78),,0,1
+benign (79),benign,benign (79)_mask.png,benign (79),,1,1
+benign (80),benign,benign (80)_mask.png,benign (80),,0,1
+benign (81),benign,benign (81)_mask.png,benign (81),,0,1
+benign (82),benign,benign (82)_mask.png,benign (82),,1,1
+benign (83),benign,benign (83)_mask.png|benign (83)_mask_1.png,benign (83),,0,1
+benign (84),benign,benign (84)_mask.png,benign (84),,0,1
+benign (85),benign,benign (85)_mask.png,benign (85),cross-class duplicate,0,0
+benign (86),benign,benign (86)_mask.png,benign (86),,0,1
+benign (87),benign,benign (87)_mask.png,benign (87),,0,1
+benign (88),benign,benign (88)_mask.png,benign (88),,0,1
+benign (89),benign,benign (89)_mask.png,benign (89),,0,1
+benign (90),benign,benign (90)_mask.png,benign (90),,0,1
+benign (91),benign,benign (91)_mask.png,benign (91),,0,1
+benign (92),benign,benign (92)_mask.png|benign (92)_mask_1.png,benign (92),,0,1
+benign (93),benign,benign (93)_mask.png|benign (93)_mask_1.png,benign (93),,0,1
+benign (94),benign,benign (94)_mask.png,benign (61),duplicate (kept another copy),0,0
+benign (95),benign,benign (95)_mask.png,benign (95),,0,1
+benign (96),benign,benign (96)_mask.png,benign (96),,0,1
+benign (97),benign,benign (97)_mask.png,benign (97),,1,1
+benign (98),benign,benign (98)_mask.png|benign (98)_mask_1.png,benign (98),,0,1
+benign (99),benign,benign (99)_mask.png,benign (65),duplicate (kept another copy),0,0
+benign (100),benign,benign (100)_mask.png|benign (100)_mask_1.png,benign (100),,0,1
+benign (101),benign,benign (101)_mask.png,benign (101),,0,1
+benign (102),benign,benign (102)_mask.png,benign (102),,1,1
+benign (103),benign,benign (103)_mask.png,benign (103),,0,1
+benign (104),benign,benign (104)_mask.png,benign (104),,0,1
+benign (105),benign,benign (105)_mask.png,benign (105),,0,1
+benign (106),benign,benign (106)_mask.png,benign (106),axilla,0,0
+benign (107),benign,benign (107)_mask.png,benign (107),,0,1
+benign (108),benign,benign (108)_mask.png,benign (61),duplicate (kept another copy),0,0
+benign (109),benign,benign (109)_mask.png,benign (109),,0,1
+benign (110),benign,benign (110)_mask.png,benign (110),,0,1
+benign (111),benign,benign (111)_mask.png,benign (111),,0,1
+benign (112),benign,benign (112)_mask.png,benign (112),,1,1
+benign (113),benign,benign (113)_mask.png,benign (113),,0,1
+benign (114),benign,benign (114)_mask.png,benign (61),duplicate (kept another copy),0,0
+benign (115),benign,benign (115)_mask.png,benign (115),,1,1
+benign (116),benign,benign (116)_mask.png,benign (61),duplicate (kept another copy),0,0
+benign (117),benign,benign (117)_mask.png,benign (117),,0,1
+benign (118),benign,benign (118)_mask.png,benign (118),,0,1
+benign (119),benign,benign (119)_mask.png,benign (61),duplicate (kept another copy),0,0
+benign (120),benign,benign (120)_mask.png,benign (120),,0,1
+benign (121),benign,benign (121)_mask.png,benign (121),,0,1
+benign (122),benign,benign (122)_mask.png,benign (61),duplicate (kept another copy),0,0
+benign (123),benign,benign (123)_mask.png,benign (123),,1,1
+benign (124),benign,benign (124)_mask.png,benign (124),,0,1
+benign (125),benign,benign (125)_mask.png,benign (125),,0,1
+benign (126),benign,benign (126)_mask.png,benign (125),duplicate (kept another copy),0,0
+benign (127),benign,benign (127)_mask.png,benign (37),duplicate (kept another copy),0,0
+benign (128),benign,benign (128)_mask.png,benign (30),duplicate (kept another copy),0,0
+benign (129),benign,benign (129)_mask.png,benign (44),duplicate (kept another copy),0,0
+benign (130),benign,benign (130)_mask.png,benign (33),duplicate (kept another copy),0,0
+benign (131),benign,benign (131)_mask.png,benign (42),cross-class duplicate,0,0
+benign (132),benign,benign (132)_mask.png,benign (38),duplicate (kept another copy),0,0
+benign (133),benign,benign (133)_mask.png,benign (51),duplicate (kept another copy),0,0
+benign (134),benign,benign (134)_mask.png,benign (52),duplicate (kept another copy),1,0
+benign (135),benign,benign (135)_mask.png,benign (58),duplicate (kept another copy),0,0
+benign (136),benign,benign (136)_mask.png,benign (50),duplicate (kept another copy),0,0
+benign (137),benign,benign (137)_mask.png,benign (137),,0,1
+benign (138),benign,benign (138)_mask.png,benign (60),duplicate (kept another copy),1,0
+benign (139),benign,benign (139)_mask.png,benign (65),duplicate (kept another copy),0,0
+benign (140),benign,benign (140)_mask.png,benign (62),duplicate (kept another copy),0,0
+benign (141),benign,benign (141)_mask.png,benign (64),duplicate (kept another copy),1,0
+benign (142),benign,benign (142)_mask.png,benign (142),,0,1
+benign (143),benign,benign (143)_mask.png,benign (143),,0,1
+benign (144),benign,benign (144)_mask.png,benign (144),,0,1
+benign (145),benign,benign (145)_mask.png,benign (145),,0,1
+benign (146),benign,benign (146)_mask.png,benign (146),,0,1
+benign (147),benign,benign (147)_mask.png,benign (147),,0,1
+benign (148),benign,benign (148)_mask.png,benign (148),,0,1
+benign (149),benign,benign (149)_mask.png,benign (149),,0,1
+benign (150),benign,benign (150)_mask.png,benign (19),duplicate (kept another copy),1,0
+benign (151),benign,benign (151)_mask.png,benign (16),duplicate (kept another copy),0,0
+benign (152),benign,benign (152)_mask.png,benign (18),duplicate (kept another copy),0,0
+benign (153),benign,benign (153)_mask.png,benign (25),duplicate (kept another copy),0,0
+benign (154),benign,benign (154)_mask.png,benign (21),duplicate (kept another copy),0,0
+benign (155),benign,benign (155)_mask.png,benign (96),duplicate (kept another copy),0,0
+benign (156),benign,benign (156)_mask.png,benign (105),duplicate (kept another copy),0,0
+benign (157),benign,benign (157)_mask.png,benign (65),duplicate (kept another copy),0,0
+benign (158),benign,benign (158)_mask.png,benign (110),duplicate (kept another copy),0,0
+benign (159),benign,benign (159)_mask.png,benign (159),,0,1
+benign (160),benign,benign (160)_mask.png,benign (160),,0,1
+benign (161),benign,benign (161)_mask.png,benign (161),,0,1
+benign (162),benign,benign (162)_mask.png,benign (162),,0,1
+benign (163),benign,benign (163)_mask.png|benign (163)_mask_1.png,benign (86),duplicate (kept another copy),0,0
+benign (164),benign,benign (164)_mask.png,benign (85),cross-class duplicate,0,0
+benign (165),benign,benign (165)_mask.png,benign (165),,0,1
+benign (166),benign,benign (166)_mask.png,benign (166),axilla,0,0
+benign (167),benign,benign (167)_mask.png,benign (167),,0,1
+benign (168),benign,benign (168)_mask.png,benign (168),,0,1
+benign (169),benign,benign (169)_mask.png,benign (169),,0,1
+benign (170),benign,benign (170)_mask.png,benign (170),,0,1
+benign (171),benign,benign (171)_mask.png,benign (171),,0,1
+benign (172),benign,benign (172)_mask.png,benign (172),,0,1
+benign (173),benign,benign (173)_mask.png|benign (173)_mask_1.png,benign (173),,0,1
+benign (174),benign,benign (174)_mask.png,benign (174),,0,1
+benign (175),benign,benign (175)_mask.png,benign (175),,0,1
+benign (176),benign,benign (176)_mask.png,benign (176),,0,1
+benign (177),benign,benign (177)_mask.png,benign (35),duplicate (kept another copy),0,0
+benign (178),benign,benign (178)_mask.png,benign (178),,0,1
+benign (179),benign,benign (179)_mask.png,benign (179),,0,1
+benign (180),benign,benign (180)_mask.png,benign (180),,0,1
+benign (181),benign,benign (181)_mask.png|benign (181)_mask_1.png,benign (181),,0,1
+benign (182),benign,benign (182)_mask.png,benign (182),,0,1
+benign (183),benign,benign (183)_mask.png,benign (183),,0,1
+benign (184),benign,benign (184)_mask.png,benign (184),,0,1
+benign (185),benign,benign (185)_mask.png,benign (185),,0,1
+benign (186),benign,benign (186)_mask.png,benign (186),,0,1
+benign (187),benign,benign (187)_mask.png,benign (187),,0,1
+benign (188),benign,benign (188)_mask.png,benign (188),,0,1
+benign (189),benign,benign (189)_mask.png,benign (189),,0,1
+benign (190),benign,benign (190)_mask.png,benign (190),,1,1
+benign (191),benign,benign (191)_mask.png,benign (191),,0,1
+benign (192),benign,benign (192)_mask.png,benign (192),,0,1
+benign (193),benign,benign (193)_mask.png,benign (193),,0,1
+benign (194),benign,benign (194)_mask.png,benign (194),,0,1
+benign (195),benign,benign (195)_mask.png|benign (195)_mask_1.png|benign (195)_mask_2.png,benign (195),,1,1
+benign (196),benign,benign (196)_mask.png,benign (196),,1,1
+benign (197),benign,benign (197)_mask.png,benign (81),duplicate (kept another copy),0,0
+benign (198),benign,benign (198)_mask.png,benign (198),,1,1
+benign (199),benign,benign (199)_mask.png,benign (199),axilla,1,0
+benign (200),benign,benign (200)_mask.png,benign (200),,1,1
+benign (201),benign,benign (201)_mask.png,benign (201),,1,1
+benign (202),benign,benign (202)_mask.png,benign (202),,1,1
+benign (203),benign,benign (203)_mask.png,benign (203),,1,1
+benign (204),benign,benign (204)_mask.png,benign (204),,1,1
+benign (205),benign,benign (205)_mask.png,benign (205),axilla,1,0
+benign (206),benign,benign (206)_mask.png,benign (206),,1,1
+benign (207),benign,benign (207)_mask.png,benign (207),axilla,1,0
+benign (208),benign,benign (208)_mask.png,benign (208),,1,1
+benign (209),benign,benign (209)_mask.png,benign (209),,1,1
+benign (210),benign,benign (210)_mask.png,benign (210),axilla,1,0
+benign (211),benign,benign (211)_mask.png,benign (211),,1,1
+benign (212),benign,benign (212)_mask.png,benign (212),,1,1
+benign (213),benign,benign (213)_mask.png,benign (213),,1,1
+benign (214),benign,benign (214)_mask.png,benign (214),,1,1
+benign (215),benign,benign (215)_mask.png,benign (215),,1,1
+benign (216),benign,benign (216)_mask.png,benign (216),,1,1
+benign (217),benign,benign (217)_mask.png,benign (217),axilla,1,0
+benign (218),benign,benign (218)_mask.png,benign (218),axilla,1,0
+benign (219),benign,benign (219)_mask.png,benign (219),,0,1
+benign (220),benign,benign (220)_mask.png,benign (220),,1,1
+benign (221),benign,benign (221)_mask.png,benign (221),,1,1
+benign (222),benign,benign (222)_mask.png,benign (222),,1,1
+benign (223),benign,benign (223)_mask.png,benign (223),axilla,1,0
+benign (224),benign,benign (224)_mask.png,benign (224),,1,1
+benign (225),benign,benign (225)_mask.png,benign (225),axilla,1,0
+benign (226),benign,benign (226)_mask.png,benign (226),,1,1
+benign (227),benign,benign (227)_mask.png,benign (227),,1,1
+benign (228),benign,benign (228)_mask.png,benign (228),axilla,1,0
+benign (229),benign,benign (229)_mask.png,benign (229),,1,1
+benign (230),benign,benign (230)_mask.png,benign (230),,1,1
+benign (231),benign,benign (231)_mask.png,benign (231),,1,1
+benign (232),benign,benign (232)_mask.png,benign (232),,1,1
+benign (233),benign,benign (233)_mask.png,benign (233),axilla,0,0
+benign (234),benign,benign (234)_mask.png,benign (234),,1,1
+benign (235),benign,benign (235)_mask.png,benign (235),axilla,1,0
+benign (236),benign,benign (236)_mask.png,benign (236),axilla,1,0
+benign (237),benign,benign (237)_mask.png,benign (237),,1,1
+benign (238),benign,benign (238)_mask.png,benign (238),,1,1
+benign (239),benign,benign (239)_mask.png,benign (239),,1,1
+benign (240),benign,benign (240)_mask.png,benign (240),,1,1
+benign (241),benign,benign (241)_mask.png,benign (241),,1,1
+benign (242),benign,benign (242)_mask.png,benign (242),,1,1
+benign (243),benign,benign (243)_mask.png,benign (243),axilla,1,0
+benign (244),benign,benign (244)_mask.png,benign (244),,1,1
+benign (245),benign,benign (245)_mask.png,benign (245),,1,1
+benign (246),benign,benign (246)_mask.png,benign (221),duplicate (kept another copy),1,0
+benign (247),benign,benign (247)_mask.png,benign (236),duplicate (kept another copy),1,0
+benign (248),benign,benign (248)_mask.png,benign (199),duplicate (kept another copy),1,0
+benign (249),benign,benign (249)_mask.png,benign (204),duplicate (kept another copy),1,0
+benign (250),benign,benign (250)_mask.png,benign (227),duplicate (kept another copy),1,0
+benign (251),benign,benign (251)_mask.png,benign (244),duplicate (kept another copy),1,0
+benign (252),benign,benign (252)_mask.png,benign (230),duplicate (kept another copy),1,0
+benign (253),benign,benign (253)_mask.png,benign (213),duplicate (kept another copy),1,0
+benign (254),benign,benign (254)_mask.png,benign (211),duplicate (kept another copy),1,0
+benign (255),benign,benign (255)_mask.png,benign (240),duplicate (kept another copy),1,0
+benign (256),benign,benign (256)_mask.png,benign (207),duplicate (kept another copy),1,0
+benign (257),benign,benign (257)_mask.png,benign (223),duplicate (kept another copy),1,0
+benign (258),benign,benign (258)_mask.png,benign (239),duplicate (kept another copy),1,0
+benign (259),benign,benign (259)_mask.png,benign (229),duplicate (kept another copy),1,0
+benign (260),benign,benign (260)_mask.png,benign (214),duplicate (kept another copy),1,0
+benign (261),benign,benign (261)_mask.png,benign (234),duplicate (kept another copy),1,0
+benign (262),benign,benign (262)_mask.png,benign (205),duplicate (kept another copy),1,0
+benign (263),benign,benign (263)_mask.png,benign (226),duplicate (kept another copy),1,0
+benign (264),benign,benign (264)_mask.png,benign (237),duplicate (kept another copy),1,0
+benign (265),benign,benign (265)_mask.png,benign (216),duplicate (kept another copy),1,0
+benign (266),benign,benign (266)_mask.png,benign (241),duplicate (kept another copy),1,0
+benign (267),benign,benign (267)_mask.png,benign (222),duplicate (kept another copy),1,0
+benign (268),benign,benign (268)_mask.png,benign (217),duplicate (kept another copy),1,0
+benign (269),benign,benign (269)_mask.png,benign (269),cross-class duplicate,0,0
+benign (270),benign,benign (270)_mask.png,benign (215),duplicate (kept another copy),1,0
+benign (271),benign,benign (271)_mask.png,benign (220),duplicate (kept another copy),1,0
+benign (272),benign,benign (272)_mask.png,benign (219),duplicate (kept another copy),0,0
+benign (273),benign,benign (273)_mask.png,benign (203),duplicate (kept another copy),1,0
+benign (274),benign,benign (274)_mask.png,benign (200),duplicate (kept another copy),1,0
+benign (275),benign,benign (275)_mask.png,benign (209),duplicate (kept another copy),1,0
+benign (276),benign,benign (276)_mask.png,benign (232),duplicate (kept another copy),1,0
+benign (277),benign,benign (277)_mask.png,benign (240),duplicate (kept another copy),1,0
+benign (278),benign,benign (278)_mask.png,benign (226),duplicate (kept another copy),1,0
+benign (279),benign,benign (279)_mask.png,benign (241),duplicate (kept another copy),1,0
+benign (280),benign,benign (280)_mask.png,benign (229),duplicate (kept another copy),1,0
+benign (281),benign,benign (281)_mask.png,benign (214),duplicate (kept another copy),1,0
+benign (282),benign,benign (282)_mask.png,benign (204),duplicate (kept another copy),1,0
+benign (283),benign,benign (283)_mask.png,benign (283),,0,1
+benign (284),benign,benign (284)_mask.png,benign (284),,1,1
+benign (285),benign,benign (285)_mask.png,benign (284),duplicate (kept another copy),1,0
+benign (286),benign,benign (286)_mask.png,benign (286),,1,1
+benign (287),benign,benign (287)_mask.png,benign (232),duplicate (kept another copy),1,0
+benign (288),benign,benign (288)_mask.png,benign (242),duplicate (kept another copy),1,0
+benign (289),benign,benign (289)_mask.png,benign (203),duplicate (kept another copy),1,0
+benign (290),benign,benign (290)_mask.png,benign (200),duplicate (kept another copy),1,0
+benign (291),benign,benign (291)_mask.png,benign (208),duplicate (kept another copy),1,0
+benign (292),benign,benign (292)_mask.png,benign (225),duplicate (kept another copy),1,0
+benign (293),benign,benign (293)_mask.png,benign (225),duplicate (kept another copy),1,0
+benign (294),benign,benign (294)_mask.png,benign (235),duplicate (kept another copy),1,0
+benign (295),benign,benign (295)_mask.png,benign (231),duplicate (kept another copy),1,0
+benign (296),benign,benign (296)_mask.png,benign (218),duplicate (kept another copy),1,0
+benign (297),benign,benign (297)_mask.png,benign (209),duplicate (kept another copy),1,0
+benign (298),benign,benign (298)_mask.png,benign (210),duplicate (kept another copy),1,0
+benign (299),benign,benign (299)_mask.png,benign (233),duplicate (kept another copy),0,0
+benign (300),benign,benign (300)_mask.png,benign (238),duplicate (kept another copy),1,0
+benign (301),benign,benign (301)_mask.png,benign (202),duplicate (kept another copy),1,0
+benign (302),benign,benign (302)_mask.png,benign (201),duplicate (kept another copy),1,0
+benign (303),benign,benign (303)_mask.png,benign (206),duplicate (kept another copy),1,0
+benign (304),benign,benign (304)_mask.png,benign (224),duplicate (kept another copy),1,0
+benign (305),benign,benign (305)_mask.png,benign (245),duplicate (kept another copy),1,0
+benign (306),benign,benign (306)_mask.png,benign (228),duplicate (kept another copy),1,0
+benign (307),benign,benign (307)_mask.png,benign (307),,0,1
+benign (308),benign,benign (308)_mask.png,benign (308),,0,1
+benign (309),benign,benign (309)_mask.png,benign (309),,1,1
+benign (310),benign,benign (310)_mask.png,benign (310),,0,1
+benign (311),benign,benign (311)_mask.png,benign (311),,0,1
+benign (312),benign,benign (312)_mask.png,benign (312),,0,1
+benign (313),benign,benign (313)_mask.png,benign (313),,0,1
+benign (314),benign,benign (314)_mask.png,benign (314),,0,1
+benign (315),benign,benign (315)_mask.png|benign (315)_mask_1.png,benign (315),,0,1
+benign (316),benign,benign (316)_mask.png,benign (316),,1,1
+benign (317),benign,benign (317)_mask.png,benign (317),,0,1
+benign (318),benign,benign (318)_mask.png,benign (1),duplicate (kept another copy),1,0
+benign (319),benign,benign (319)_mask.png,benign (2),duplicate (kept another copy),1,0
+benign (320),benign,benign (320)_mask.png,benign (3),duplicate (kept another copy),1,0
+benign (321),benign,benign (321)_mask.png,benign (4),duplicate (kept another copy),1,0
+benign (322),benign,benign (322)_mask.png,benign (5),duplicate (kept another copy),1,0
+benign (323),benign,benign (323)_mask.png,benign (6),duplicate (kept another copy),1,0
+benign (324),benign,benign (324)_mask.png,benign (7),duplicate (kept another copy),0,0
+benign (325),benign,benign (325)_mask.png,benign (8),duplicate (kept another copy),0,0
+benign (326),benign,benign (326)_mask.png,benign (9),duplicate (kept another copy),1,0
+benign (327),benign,benign (327)_mask.png,benign (10),duplicate (kept another copy),0,0
+benign (328),benign,benign (328)_mask.png,benign (11),duplicate (kept another copy),1,0
+benign (329),benign,benign (329)_mask.png,benign (12),duplicate (kept another copy),0,0
+benign (330),benign,benign (330)_mask.png,benign (13),duplicate (kept another copy),1,0
+benign (331),benign,benign (331)_mask.png,benign (14),duplicate (kept another copy),1,0
+benign (332),benign,benign (332)_mask.png,benign (15),duplicate (kept another copy),0,0
+benign (333),benign,benign (333)_mask.png,benign (333),cross-class duplicate,0,0
+benign (334),benign,benign (334)_mask.png,benign (334),,1,1
+benign (335),benign,benign (335)_mask.png,benign (335),,0,1
+benign (336),benign,benign (336)_mask.png,benign (336),,0,1
+benign (337),benign,benign (337)_mask.png,benign (337),,0,1
+benign (338),benign,benign (338)_mask.png,benign (338),,0,1
+benign (339),benign,benign (339)_mask.png,benign (339),,0,1
+benign (340),benign,benign (340)_mask.png,benign (340),,0,1
+benign (341),benign,benign (341)_mask.png,benign (341),,0,1
+benign (342),benign,benign (342)_mask.png,benign (342),,0,1
+benign (343),benign,benign (343)_mask.png,benign (343),,1,1
+benign (344),benign,benign (344)_mask.png,benign (344),,0,1
+benign (345),benign,benign (345)_mask.png,benign (345),,1,1
+benign (346),benign,benign (346)_mask.png|benign (346)_mask_1.png,benign (346),,0,1
+benign (347),benign,benign (347)_mask.png,benign (347),,0,1
+benign (348),benign,benign (348)_mask.png,benign (348),,0,1
+benign (349),benign,benign (349)_mask.png,benign (349),,0,1
+benign (350),benign,benign (350)_mask.png,benign (350),,0,1
+benign (351),benign,benign (351)_mask.png,benign (351),,0,1
+benign (352),benign,benign (352)_mask.png,benign (352),,0,1
+benign (353),benign,benign (353)_mask.png,benign (353),,0,1
+benign (354),benign,benign (354)_mask.png,benign (354),,0,1
+benign (355),benign,benign (355)_mask.png,benign (355),,0,1
+benign (356),benign,benign (356)_mask.png,benign (356),,0,1
+benign (357),benign,benign (357)_mask.png,benign (357),,0,1
+benign (358),benign,benign (358)_mask.png,benign (358),,0,1
+benign (359),benign,benign (359)_mask.png,benign (359),,1,1
+benign (360),benign,benign (360)_mask.png,benign (360),,0,1
+benign (361),benign,benign (361)_mask.png,benign (361),,0,1
+benign (362),benign,benign (362)_mask.png,benign (362),,1,1
+benign (363),benign,benign (363)_mask.png,benign (363),,0,1
+benign (364),benign,benign (364)_mask.png,benign (364),,0,1
+benign (365),benign,benign (365)_mask.png,benign (365),,0,1
+benign (366),benign,benign (366)_mask.png,benign (366),,1,1
+benign (367),benign,benign (367)_mask.png,benign (367),,1,1
+benign (368),benign,benign (368)_mask.png,benign (368),,0,1
+benign (369),benign,benign (369)_mask.png,benign (369),,0,1
+benign (370),benign,benign (370)_mask.png,benign (370),,0,1
+benign (371),benign,benign (371)_mask.png,benign (371),,0,1
+benign (372),benign,benign (372)_mask.png,benign (372),,0,1
+benign (373),benign,benign (373)_mask.png,benign (373),,1,1
+benign (374),benign,benign (374)_mask.png,benign (374),,1,1
+benign (375),benign,benign (375)_mask.png,benign (375),,0,1
+benign (376),benign,benign (376)_mask.png,benign (376),,0,1
+benign (377),benign,benign (377)_mask.png,benign (377),,0,1
+benign (378),benign,benign (378)_mask.png,benign (378),,0,1
+benign (379),benign,benign (379)_mask.png,benign (379),,0,1
+benign (380),benign,benign (380)_mask.png,benign (380),,1,1
+benign (381),benign,benign (381)_mask.png,benign (381),,0,1
+benign (382),benign,benign (382)_mask.png,benign (382),,1,1
+benign (383),benign,benign (383)_mask.png,benign (383),,0,1
+benign (384),benign,benign (384)_mask.png,benign (384),,0,1
+benign (385),benign,benign (385)_mask.png,benign (385),,0,1
+benign (386),benign,benign (386)_mask.png,benign (386),,0,1
+benign (387),benign,benign (387)_mask.png,benign (387),,0,1
+benign (388),benign,benign (388)_mask.png,benign (388),,0,1
+benign (389),benign,benign (389)_mask.png,benign (389),,1,1
+benign (390),benign,benign (390)_mask.png,benign (390),,1,1
+benign (391),benign,benign (391)_mask.png,benign (391),,0,1
+benign (392),benign,benign (392)_mask.png,benign (392),,1,1
+benign (393),benign,benign (393)_mask.png,benign (393),,1,1
+benign (394),benign,benign (394)_mask.png,benign (394),,0,1
+benign (395),benign,benign (395)_mask.png,benign (395),,0,1
+benign (396),benign,benign (396)_mask.png,benign (396),,0,1
+benign (397),benign,benign (397)_mask.png,benign (397),,1,1
+benign (398),benign,benign (398)_mask.png,benign (398),,0,1
+benign (399),benign,benign (399)_mask.png,benign (399),cross-class duplicate,0,0
+benign (400),benign,benign (400)_mask.png,benign (400),,0,1
+benign (401),benign,benign (401)_mask.png,benign (401),,1,1
+benign (402),benign,benign (402)_mask.png,benign (402),,0,1
+benign (403),benign,benign (403)_mask.png,benign (403),,0,1
+benign (404),benign,benign (404)_mask.png,benign (404),,0,1
+benign (405),benign,benign (405)_mask.png,benign (405),,0,1
+benign (406),benign,benign (406)_mask.png,benign (406),cross-class duplicate,0,0
+benign (407),benign,benign (407)_mask.png,benign (407),,1,1
+benign (408),benign,benign (408)_mask.png,benign (408),,1,1
+benign (409),benign,benign (409)_mask.png,benign (409),,1,1
+benign (410),benign,benign (410)_mask.png,benign (410),,1,1
+benign (411),benign,benign (411)_mask.png,benign (395),duplicate (kept another copy),0,0
+benign (412),benign,benign (412)_mask.png,benign (400),duplicate (kept another copy),0,0
+benign (413),benign,benign (413)_mask.png,benign (396),duplicate (kept another copy),0,0
+benign (414),benign,benign (414)_mask.png,benign (414),,0,1
+benign (415),benign,benign (415)_mask.png,benign (404),duplicate (kept another copy),0,0
+benign (416),benign,benign (416)_mask.png,benign (416),,1,1
+benign (417),benign,benign (417)_mask.png,benign (417),,0,1
+benign (418),benign,benign (418)_mask.png,benign (418),,0,1
+benign (419),benign,benign (419)_mask.png,benign (307),duplicate (kept another copy),0,0
+benign (420),benign,benign (420)_mask.png,benign (420),,0,1
+benign (421),benign,benign (421)_mask.png,benign (312),duplicate (kept another copy),0,0
+benign (422),benign,benign (422)_mask.png,benign (309),duplicate (kept another copy),1,0
+benign (423),benign,benign (423)_mask.png,benign (310),duplicate (kept another copy),0,0
+benign (424),benign,benign (424)_mask.png|benign (424)_mask_1.png,benign (308),duplicate (kept another copy),0,0
+benign (425),benign,benign (425)_mask.png,benign (17),duplicate (kept another copy),0,0
+benign (426),benign,benign (426)_mask.png,benign (316),duplicate (kept another copy),1,0
+benign (427),benign,benign (427)_mask.png,benign (427),,1,1
+benign (428),benign,benign (428)_mask.png,benign (428),,1,1
+benign (429),benign,benign (429)_mask.png,benign (429),,0,1
+benign (430),benign,benign (430)_mask.png,benign (430),,0,1
+benign (431),benign,benign (431)_mask.png,benign (431),,0,1
+benign (432),benign,benign (432)_mask.png,benign (432),,1,1
+benign (433),benign,benign (433)_mask.png,benign (433),cross-class duplicate,1,0
+benign (434),benign,benign (434)_mask.png,benign (434),,0,1
+benign (435),benign,benign (435)_mask.png,benign (435),,0,1
+benign (436),benign,benign (436)_mask.png,benign (436),,1,1
+benign (437),benign,benign (437)_mask.png,benign (437),cross-class duplicate,0,0
+malignant (1),malignant,malignant (1)_mask.png,malignant (1),,0,1
+malignant (2),malignant,malignant (2)_mask.png,malignant (2),,1,1
+malignant (3),malignant,malignant (3)_mask.png,malignant (3),,0,1
+malignant (4),malignant,malignant (4)_mask.png,malignant (4),,0,1
+malignant (5),malignant,malignant (5)_mask.png,malignant (4),duplicate (kept another copy),0,0
+malignant (6),malignant,malignant (6)_mask.png,malignant (4),duplicate (kept another copy),0,0
+malignant (7),malignant,malignant (7)_mask.png,malignant (4),duplicate (kept another copy),0,0
+malignant (8),malignant,malignant (8)_mask.png,malignant (4),duplicate (kept another copy),0,0
+malignant (9),malignant,malignant (9)_mask.png,malignant (4),duplicate (kept another copy),0,0
+malignant (10),malignant,malignant (10)_mask.png,malignant (10),,1,1
+malignant (11),malignant,malignant (11)_mask.png,malignant (11),axilla,1,0
+malignant (12),malignant,malignant (12)_mask.png,malignant (12),axilla,1,0
+malignant (13),malignant,malignant (13)_mask.png,malignant (13),axilla,1,0
+malignant (14),malignant,malignant (14)_mask.png,malignant (14),,1,1
+malignant (15),malignant,malignant (15)_mask.png,malignant (15),,1,1
+malignant (16),malignant,malignant (16)_mask.png,malignant (16),,0,1
+malignant (17),malignant,malignant (17)_mask.png,malignant (17),,0,1
+malignant (18),malignant,malignant (18)_mask.png,malignant (18),,0,1
+malignant (19),malignant,malignant (19)_mask.png,malignant (19),,0,1
+malignant (20),malignant,malignant (20)_mask.png,malignant (20),,0,1
+malignant (21),malignant,malignant (21)_mask.png,malignant (21),,0,1
+malignant (22),malignant,malignant (22)_mask.png,malignant (22),,0,1
+malignant (23),malignant,malignant (23)_mask.png,malignant (23),,0,1
+malignant (24),malignant,malignant (24)_mask.png,malignant (24),,0,1
+malignant (25),malignant,malignant (25)_mask.png,malignant (25),,0,1
+malignant (26),malignant,malignant (26)_mask.png,malignant (26),,1,1
+malignant (27),malignant,malignant (27)_mask.png,malignant (27),axilla,0,0
+malignant (28),malignant,malignant (28)_mask.png,malignant (27),duplicate (kept another copy),0,0
+malignant (29),malignant,malignant (29)_mask.png,malignant (29),,0,1
+malignant (30),malignant,malignant (30)_mask.png,malignant (30),,0,1
+malignant (31),malignant,malignant (31)_mask.png,malignant (31),,0,1
+malignant (32),malignant,malignant (32)_mask.png,malignant (32),,0,1
+malignant (33),malignant,malignant (33)_mask.png,malignant (33),,0,1
+malignant (34),malignant,malignant (34)_mask.png,malignant (34),,0,1
+malignant (35),malignant,malignant (35)_mask.png,malignant (35),,0,1
+malignant (36),malignant,malignant (36)_mask.png,malignant (36),,0,1
+malignant (37),malignant,malignant (37)_mask.png,malignant (37),,0,1
+malignant (38),malignant,malignant (38)_mask.png,malignant (38),,0,1
+malignant (39),malignant,malignant (39)_mask.png,malignant (39),,0,1
+malignant (40),malignant,malignant (40)_mask.png,malignant (40),,0,1
+malignant (41),malignant,malignant (41)_mask.png,malignant (41),,0,1
+malignant (42),malignant,malignant (42)_mask.png,malignant (39),duplicate (kept another copy),0,0
+malignant (43),malignant,malignant (43)_mask.png,malignant (43),,0,1
+malignant (44),malignant,malignant (44)_mask.png,malignant (44),,0,1
+malignant (45),malignant,malignant (45)_mask.png,malignant (45),,0,1
+malignant (46),malignant,malignant (46)_mask.png,malignant (46),,0,1
+malignant (47),malignant,malignant (47)_mask.png,malignant (47),,0,1
+malignant (48),malignant,malignant (48)_mask.png,malignant (48),,0,1
+malignant (49),malignant,malignant (49)_mask.png,malignant (49),,0,1
+malignant (50),malignant,malignant (50)_mask.png,malignant (50),,0,1
+malignant (51),malignant,malignant (51)_mask.png,benign (42),cross-class duplicate,0,0
+malignant (52),malignant,malignant (52)_mask.png,benign (85),cross-class duplicate,0,0
+malignant (53),malignant,malignant (53)_mask.png|malignant (53)_mask_1.png,malignant (53),,1,1
+malignant (54),malignant,malignant (54)_mask.png,malignant (54),,0,1
+malignant (55),malignant,malignant (55)_mask.png,malignant (55),,0,1
+malignant (56),malignant,malignant (56)_mask.png,malignant (56),,0,1
+malignant (57),malignant,malignant (57)_mask.png,malignant (57),,0,1
+malignant (58),malignant,malignant (58)_mask.png,malignant (58),,0,1
+malignant (59),malignant,malignant (59)_mask.png,malignant (59),,0,1
+malignant (60),malignant,malignant (60)_mask.png,malignant (60),,0,1
+malignant (61),malignant,malignant (61)_mask.png,malignant (61),axilla,1,0
+malignant (62),malignant,malignant (62)_mask.png,malignant (62),,0,1
+malignant (63),malignant,malignant (63)_mask.png,malignant (63),,0,1
+malignant (64),malignant,malignant (64)_mask.png,malignant (64),,0,1
+malignant (65),malignant,malignant (65)_mask.png,malignant (65),,0,1
+malignant (66),malignant,malignant (66)_mask.png,malignant (65),duplicate (kept another copy),0,0
+malignant (67),malignant,malignant (67)_mask.png,malignant (67),,0,1
+malignant (68),malignant,malignant (68)_mask.png,malignant (68),,0,1
+malignant (69),malignant,malignant (69)_mask.png,malignant (69),needle,0,0
+malignant (70),malignant,malignant (70)_mask.png,malignant (70),needle,0,0
+malignant (71),malignant,malignant (71)_mask.png,malignant (71),,0,1
+malignant (72),malignant,malignant (72)_mask.png,malignant (72),,0,1
+malignant (73),malignant,malignant (73)_mask.png,malignant (73),,0,1
+malignant (74),malignant,malignant (74)_mask.png,malignant (74),,0,1
+malignant (75),malignant,malignant (75)_mask.png,malignant (75),,0,1
+malignant (76),malignant,malignant (76)_mask.png,malignant (76),,0,1
+malignant (77),malignant,malignant (77)_mask.png,benign (333),cross-class duplicate,0,0
+malignant (78),malignant,malignant (78)_mask.png,benign (333),cross-class duplicate,0,0
+malignant (79),malignant,malignant (79)_mask.png,malignant (79),,0,1
+malignant (80),malignant,malignant (80)_mask.png,malignant (80),,1,1
+malignant (81),malignant,malignant (81)_mask.png,malignant (80),duplicate (kept another copy),1,0
+malignant (82),malignant,malignant (82)_mask.png,malignant (82),,0,1
+malignant (83),malignant,malignant (83)_mask.png,malignant (83),,1,1
+malignant (84),malignant,malignant (84)_mask.png,malignant (84),,0,1
+malignant (85),malignant,malignant (85)_mask.png,malignant (85),,0,1
+malignant (86),malignant,malignant (86)_mask.png,malignant (85),duplicate (kept another copy),0,0
+malignant (87),malignant,malignant (87)_mask.png,malignant (87),,0,1
+malignant (88),malignant,malignant (88)_mask.png,malignant (17),duplicate (kept another copy),0,0
+malignant (89),malignant,malignant (89)_mask.png,malignant (89),,0,1
+malignant (90),malignant,malignant (90)_mask.png,malignant (90),,0,1
+malignant (91),malignant,malignant (91)_mask.png,malignant (91),,0,1
+malignant (92),malignant,malignant (92)_mask.png,malignant (34),duplicate (kept another copy),0,0
+malignant (93),malignant,malignant (93)_mask.png,benign (399),cross-class duplicate,0,0
+malignant (94),malignant,malignant (94)_mask.png,benign (406),cross-class duplicate,0,0
+malignant (95),malignant,malignant (95)_mask.png,malignant (95),,0,1
+malignant (96),malignant,malignant (96)_mask.png,malignant (95),duplicate (kept another copy),0,0
+malignant (97),malignant,malignant (97)_mask.png,malignant (95),duplicate (kept another copy),0,0
+malignant (98),malignant,malignant (98)_mask.png,malignant (98),,0,1
+malignant (99),malignant,malignant (99)_mask.png,malignant (98),duplicate (kept another copy),0,0
+malignant (100),malignant,malignant (100)_mask.png,malignant (100),,0,1
+malignant (101),malignant,malignant (101)_mask.png,malignant (101),,0,1
+malignant (102),malignant,malignant (102)_mask.png,malignant (102),,0,1
+malignant (103),malignant,malignant (103)_mask.png,malignant (103),,1,1
+malignant (104),malignant,malignant (104)_mask.png,malignant (104),,0,1
+malignant (105),malignant,malignant (105)_mask.png,malignant (105),,0,1
+malignant (106),malignant,malignant (106)_mask.png,malignant (106),,0,1
+malignant (107),malignant,malignant (107)_mask.png,malignant (106),duplicate (kept another copy),0,0
+malignant (108),malignant,malignant (108)_mask.png,malignant (108),axilla,0,0
+malignant (109),malignant,malignant (109)_mask.png,malignant (13),duplicate (kept another copy),1,0
+malignant (110),malignant,malignant (110)_mask.png,malignant (12),duplicate (kept another copy),1,0
+malignant (111),malignant,malignant (111)_mask.png,malignant (15),duplicate (kept another copy),1,0
+malignant (112),malignant,malignant (112)_mask.png,malignant (10),duplicate (kept another copy),1,0
+malignant (113),malignant,malignant (113)_mask.png,malignant (11),duplicate (kept another copy),1,0
+malignant (114),malignant,malignant (114)_mask.png,malignant (14),duplicate (kept another copy),1,0
+malignant (115),malignant,malignant (115)_mask.png,malignant (115),,0,1
+malignant (116),malignant,malignant (116)_mask.png,malignant (18),duplicate (kept another copy),0,0
+malignant (117),malignant,malignant (117)_mask.png,malignant (117),,0,1
+malignant (118),malignant,malignant (118)_mask.png,malignant (118),,1,1
+malignant (119),malignant,malignant (119)_mask.png,malignant (118),duplicate (kept another copy),1,0
+malignant (120),malignant,malignant (120)_mask.png,malignant (120),,0,1
+malignant (121),malignant,malignant (121)_mask.png,malignant (121),,1,1
+malignant (122),malignant,malignant (122)_mask.png,malignant (122),,1,1
+malignant (123),malignant,malignant (123)_mask.png,malignant (14),duplicate (kept another copy),1,0
+malignant (124),malignant,malignant (124)_mask.png,malignant (124),,1,1
+malignant (125),malignant,malignant (125)_mask.png,malignant (125),,1,1
+malignant (126),malignant,malignant (126)_mask.png,malignant (126),,1,1
+malignant (127),malignant,malignant (127)_mask.png,malignant (127),,1,1
+malignant (128),malignant,malignant (128)_mask.png,malignant (128),,1,1
+malignant (129),malignant,malignant (129)_mask.png,malignant (128),duplicate (kept another copy),1,0
+malignant (130),malignant,malignant (130)_mask.png,malignant (130),,1,1
+malignant (131),malignant,malignant (131)_mask.png,malignant (131),,1,1
+malignant (132),malignant,malignant (132)_mask.png,malignant (132),,1,1
+malignant (133),malignant,malignant (133)_mask.png,malignant (133),,0,1
+malignant (134),malignant,malignant (134)_mask.png,malignant (134),,0,1
+malignant (135),malignant,malignant (135)_mask.png,malignant (135),,0,1
+malignant (136),malignant,malignant (136)_mask.png,malignant (136),,0,1
+malignant (137),malignant,malignant (137)_mask.png,malignant (137),,0,1
+malignant (138),malignant,malignant (138)_mask.png,malignant (138),,0,1
+malignant (139),malignant,malignant (139)_mask.png,malignant (139),,1,1
+malignant (140),malignant,malignant (140)_mask.png,malignant (140),,1,1
+malignant (141),malignant,malignant (141)_mask.png,malignant (141),,0,1
+malignant (142),malignant,malignant (142)_mask.png,malignant (142),,0,1
+malignant (143),malignant,malignant (143)_mask.png,malignant (143),,1,1
+malignant (144),malignant,malignant (144)_mask.png,malignant (144),,0,1
+malignant (145),malignant,malignant (145)_mask.png,benign (433),cross-class duplicate,1,0
+malignant (146),malignant,malignant (146)_mask.png,malignant (146),,0,1
+malignant (147),malignant,malignant (147)_mask.png,malignant (147),,0,1
+malignant (148),malignant,malignant (148)_mask.png,malignant (148),axilla,1,0
+malignant (149),malignant,malignant (149)_mask.png,malignant (149),axilla,0,0
+malignant (150),malignant,malignant (150)_mask.png,malignant (150),,0,1
+malignant (151),malignant,malignant (151)_mask.png,malignant (151),,0,1
+malignant (152),malignant,malignant (152)_mask.png,malignant (152),,0,1
+malignant (153),malignant,malignant (153)_mask.png,malignant (153),,1,1
+malignant (154),malignant,malignant (154)_mask.png,malignant (154),,0,1
+malignant (155),malignant,malignant (155)_mask.png,malignant (155),,0,1
+malignant (156),malignant,malignant (156)_mask.png,malignant (156),,0,1
+malignant (157),malignant,malignant (157)_mask.png,malignant (157),,1,1
+malignant (158),malignant,malignant (158)_mask.png,malignant (158),,0,1
+malignant (159),malignant,malignant (159)_mask.png,malignant (159),,0,1
+malignant (160),malignant,malignant (160)_mask.png,malignant (160),,0,1
+malignant (161),malignant,malignant (161)_mask.png,malignant (161),,0,1
+malignant (162),malignant,malignant (162)_mask.png,malignant (162),,0,1
+malignant (163),malignant,malignant (163)_mask.png,malignant (163),,0,1
+malignant (164),malignant,malignant (164)_mask.png,malignant (164),,0,1
+malignant (165),malignant,malignant (165)_mask.png,malignant (165),,0,1
+malignant (166),malignant,malignant (166)_mask.png,malignant (166),,0,1
+malignant (167),malignant,malignant (167)_mask.png,malignant (167),axilla,1,0
+malignant (168),malignant,malignant (168)_mask.png,malignant (168),,0,1
+malignant (169),malignant,malignant (169)_mask.png,malignant (169),,1,1
+malignant (170),malignant,malignant (170)_mask.png,malignant (170),,0,1
+malignant (171),malignant,malignant (171)_mask.png,malignant (171),,0,1
+malignant (172),malignant,malignant (172)_mask.png,malignant (172),,0,1
+malignant (173),malignant,malignant (173)_mask.png,malignant (173),needle,0,0
+malignant (174),malignant,malignant (174)_mask.png,malignant (174),needle,0,0
+malignant (175),malignant,malignant (175)_mask.png,malignant (175),,0,1
+malignant (176),malignant,malignant (176)_mask.png,malignant (176),,0,1
+malignant (177),malignant,malignant (177)_mask.png,malignant (177),,0,1
+malignant (178),malignant,malignant (178)_mask.png,malignant (178),,0,1
+malignant (179),malignant,malignant (179)_mask.png,malignant (179),,0,1
+malignant (180),malignant,malignant (180)_mask.png,malignant (180),axilla,1,0
+malignant (181),malignant,malignant (181)_mask.png,malignant (181),,0,1
+malignant (182),malignant,malignant (182)_mask.png,malignant (182),,1,1
+malignant (183),malignant,malignant (183)_mask.png,malignant (183),,0,1
+malignant (184),malignant,malignant (184)_mask.png,malignant (184),,0,1
+malignant (185),malignant,malignant (185)_mask.png,malignant (185),,0,1
+malignant (186),malignant,malignant (186)_mask.png,malignant (186),,0,1
+malignant (187),malignant,malignant (187)_mask.png,malignant (187),,0,1
+malignant (188),malignant,malignant (188)_mask.png,malignant (188),,1,1
+malignant (189),malignant,malignant (189)_mask.png,malignant (189),,0,1
+malignant (190),malignant,malignant (190)_mask.png,malignant (190),needle,0,0
+malignant (191),malignant,malignant (191)_mask.png,malignant (191),,0,1
+malignant (192),malignant,malignant (192)_mask.png,malignant (192),,0,1
+malignant (193),malignant,malignant (193)_mask.png,malignant (193),,0,1
+malignant (194),malignant,malignant (194)_mask.png,malignant (194),,0,1
+malignant (195),malignant,malignant (195)_mask.png,malignant (195),,0,1
+malignant (196),malignant,malignant (196)_mask.png,malignant (196),,1,1
+malignant (197),malignant,malignant (197)_mask.png,malignant (197),,0,1
+malignant (198),malignant,malignant (198)_mask.png,malignant (198),,1,1
+malignant (199),malignant,malignant (199)_mask.png,malignant (199),,0,1
+malignant (200),malignant,malignant (200)_mask.png,malignant (200),axilla,0,0
+malignant (201),malignant,malignant (201)_mask.png,malignant (201),,1,1
+malignant (202),malignant,malignant (202)_mask.png,malignant (202),,0,1
+malignant (203),malignant,malignant (203)_mask.png,malignant (203),,0,1
+malignant (204),malignant,malignant (204)_mask.png,malignant (204),,0,1
+malignant (205),malignant,malignant (205)_mask.png,malignant (205),,1,1
+malignant (206),malignant,malignant (206)_mask.png,malignant (206),,0,1
+malignant (207),malignant,malignant (207)_mask.png,malignant (207),,1,1
+malignant (208),malignant,malignant (208)_mask.png,malignant (208),,1,1
+malignant (209),malignant,malignant (209)_mask.png,malignant (209),,0,1
+malignant (210),malignant,malignant (210)_mask.png,malignant (210),,0,1
+normal (1),normal,normal (1)_mask.png,benign (269),cross-class duplicate,0,0
+normal (2),normal,normal (2)_mask.png,normal (2),axilla,0,0
+normal (3),normal,normal (3)_mask.png,normal (3),,0,1
+normal (4),normal,normal (4)_mask.png,normal (4),,0,1
+normal (5),normal,normal (5)_mask.png,normal (5),,0,1
+normal (6),normal,normal (6)_mask.png,normal (6),,0,1
+normal (7),normal,normal (7)_mask.png,normal (7),,0,1
+normal (8),normal,normal (8)_mask.png,normal (8),,0,1
+normal (9),normal,normal (9)_mask.png,normal (9),,0,1
+normal (10),normal,normal (10)_mask.png,normal (10),,0,1
+normal (11),normal,normal (11)_mask.png,normal (11),,0,1
+normal (12),normal,normal (12)_mask.png,normal (12),,0,1
+normal (13),normal,normal (13)_mask.png,normal (5),duplicate (kept another copy),0,0
+normal (14),normal,normal (14)_mask.png,normal (14),,0,1
+normal (15),normal,normal (15)_mask.png,normal (15),,0,1
+normal (16),normal,normal (16)_mask.png,normal (16),,0,1
+normal (17),normal,normal (17)_mask.png,normal (17),,0,1
+normal (18),normal,normal (18)_mask.png,normal (18),,0,1
+normal (19),normal,normal (19)_mask.png,normal (19),,0,1
+normal (20),normal,normal (20)_mask.png,normal (20),,0,1
+normal (21),normal,normal (21)_mask.png,normal (21),,0,1
+normal (22),normal,normal (22)_mask.png,normal (22),,0,1
+normal (23),normal,normal (23)_mask.png,normal (23),,0,1
+normal (24),normal,normal (24)_mask.png,normal (24),,0,1
+normal (25),normal,normal (25)_mask.png,normal (25),,1,1
+normal (26),normal,normal (26)_mask.png,normal (26),,0,1
+normal (27),normal,normal (27)_mask.png,normal (27),,0,1
+normal (28),normal,normal (28)_mask.png,normal (28),,0,1
+normal (29),normal,normal (29)_mask.png,normal (29),,0,1
+normal (30),normal,normal (30)_mask.png,normal (30),,0,1
+normal (31),normal,normal (31)_mask.png,normal (31),,1,1
+normal (32),normal,normal (32)_mask.png,normal (32),,0,1
+normal (33),normal,normal (33)_mask.png,normal (33),,0,1
+normal (34),normal,normal (34)_mask.png,benign (437),cross-class duplicate,0,0
+normal (35),normal,normal (35)_mask.png,normal (35),needle,0,0
+normal (36),normal,normal (36)_mask.png,normal (36),,0,1
+normal (37),normal,normal (37)_mask.png,normal (37),,0,1
+normal (38),normal,normal (38)_mask.png,normal (38),,0,1
+normal (39),normal,normal (39)_mask.png,normal (39),axilla,0,0
+normal (40),normal,normal (40)_mask.png,normal (40),,0,1
+normal (41),normal,normal (41)_mask.png,normal (41),,0,1
+normal (42),normal,normal (42)_mask.png,normal (42),axilla,0,0
+normal (43),normal,normal (43)_mask.png,normal (38),duplicate (kept another copy),0,0
+normal (44),normal,normal (44)_mask.png,normal (41),duplicate (kept another copy),0,0
+normal (45),normal,normal (45)_mask.png,normal (42),duplicate (kept another copy),0,0
+normal (46),normal,normal (46)_mask.png,normal (40),duplicate (kept another copy),0,0
+normal (47),normal,normal (47)_mask.png,normal (41),duplicate (kept another copy),0,0
+normal (48),normal,normal (48)_mask.png,normal (39),duplicate (kept another copy),0,0
+normal (49),normal,normal (49)_mask.png,normal (42),duplicate (kept another copy),0,0
+normal (50),normal,normal (50)_mask.png,normal (38),duplicate (kept another copy),0,0
+normal (51),normal,normal (51)_mask.png,normal (51),,0,1
+normal (52),normal,normal (52)_mask.png,normal (51),duplicate (kept another copy),0,0
+normal (53),normal,normal (53)_mask.png,normal (38),duplicate (kept another copy),0,0
+normal (54),normal,normal (54)_mask.png,normal (51),duplicate (kept another copy),0,0
+normal (55),normal,normal (55)_mask.png,normal (55),,0,1
+normal (56),normal,normal (56)_mask.png,normal (39),duplicate (kept another copy),0,0
+normal (57),normal,normal (57)_mask.png,normal (55),duplicate (kept another copy),0,0
+normal (58),normal,normal (58)_mask.png,normal (58),axilla,0,0
+normal (59),normal,normal (59)_mask.png,normal (40),duplicate (kept another copy),0,0
+normal (60),normal,normal (60)_mask.png,normal (58),duplicate (kept another copy),0,0
+normal (61),normal,normal (61)_mask.png,normal (41),duplicate (kept another copy),0,0
+normal (62),normal,normal (62)_mask.png,normal (42),duplicate (kept another copy),0,0
+normal (63),normal,normal (63)_mask.png,normal (21),duplicate (kept another copy),0,0
+normal (64),normal,normal (64)_mask.png,normal (21),duplicate (kept another copy),0,0
+normal (65),normal,normal (65)_mask.png,normal (65),,0,1
+normal (66),normal,normal (66)_mask.png,normal (66),,0,1
+normal (67),normal,normal (67)_mask.png,normal (55),duplicate (kept another copy),0,0
+normal (68),normal,normal (68)_mask.png,normal (55),duplicate (kept another copy),0,0
+normal (69),normal,normal (69)_mask.png,normal (58),duplicate (kept another copy),0,0
+normal (70),normal,normal (70)_mask.png,normal (70),,0,1
+normal (71),normal,normal (71)_mask.png,normal (71),,0,1
+normal (72),normal,normal (72)_mask.png,normal (72),,0,1
+normal (73),normal,normal (73)_mask.png,normal (73),,0,1
+normal (74),normal,normal (74)_mask.png,normal (74),,0,1
+normal (75),normal,normal (75)_mask.png,normal (75),axilla,0,0
+normal (76),normal,normal (76)_mask.png,normal (76),,0,1
+normal (77),normal,normal (77)_mask.png,normal (77),,1,1
+normal (78),normal,normal (78)_mask.png,normal (78),,0,1
+normal (79),normal,normal (79)_mask.png,normal (79),,0,1
+normal (80),normal,normal (80)_mask.png,normal (80),,0,1
+normal (81),normal,normal (81)_mask.png,normal (23),duplicate (kept another copy),0,0
+normal (82),normal,normal (82)_mask.png,normal (82),,0,1
+normal (83),normal,normal (83)_mask.png,normal (83),axilla,0,0
+normal (84),normal,normal (84)_mask.png,normal (84),,0,1
+normal (85),normal,normal (85)_mask.png,normal (85),axilla,0,0
+normal (86),normal,normal (86)_mask.png,normal (86),,0,1
+normal (87),normal,normal (87)_mask.png,normal (87),,0,1
+normal (88),normal,normal (88)_mask.png,normal (88),,0,1
+normal (89),normal,normal (89)_mask.png,normal (89),,0,1
+normal (90),normal,normal (90)_mask.png,normal (90),axilla,0,0
+normal (91),normal,normal (91)_mask.png,normal (91),axilla,0,0
+normal (92),normal,normal (92)_mask.png,normal (92),axilla,0,0
+normal (93),normal,normal (93)_mask.png,normal (93),axilla,0,0
+normal (94),normal,normal (94)_mask.png,normal (94),axilla,0,0
+normal (95),normal,normal (95)_mask.png,normal (95),,0,1
+normal (96),normal,normal (96)_mask.png,normal (96),,0,1
+normal (97),normal,normal (97)_mask.png,normal (97),axilla,0,0
+normal (98),normal,normal (98)_mask.png,normal (97),duplicate (kept another copy),0,0
+normal (99),normal,normal (99)_mask.png,normal (99),,0,1
+normal (100),normal,normal (100)_mask.png,normal (100),axilla,0,0
+normal (101),normal,normal (101)_mask.png,normal (101),axilla,0,0
+normal (102),normal,normal (102)_mask.png,normal (102),,0,1
+normal (103),normal,normal (103)_mask.png,normal (103),,0,1
+normal (104),normal,normal (104)_mask.png,normal (104),axilla,0,0
+normal (105),normal,normal (105)_mask.png,normal (105),,0,1
+normal (106),normal,normal (106)_mask.png,normal (106),,0,1
+normal (107),normal,normal (107)_mask.png,normal (104),duplicate (kept another copy),0,0
+normal (108),normal,normal (108)_mask.png,normal (108),,0,1
+normal (109),normal,normal (109)_mask.png,normal (109),,0,1
+normal (110),normal,normal (110)_mask.png,normal (110),axilla,0,0
+normal (111),normal,normal (111)_mask.png,normal (111),,0,1
+normal (112),normal,normal (112)_mask.png,normal (112),,0,1
+normal (113),normal,normal (113)_mask.png,normal (113),,1,1
+normal (114),normal,normal (114)_mask.png,normal (114),,1,1
+normal (115),normal,normal (115)_mask.png,normal (115),,0,1
+normal (116),normal,normal (116)_mask.png,normal (116),,0,1
+normal (117),normal,normal (117)_mask.png,normal (117),,0,1
+normal (118),normal,normal (118)_mask.png,normal (118),axilla,1,0
+normal (119),normal,normal (119)_mask.png,normal (30),duplicate (kept another copy),0,0
+normal (120),normal,normal (120)_mask.png,normal (33),duplicate (kept another copy),0,0
+normal (121),normal,normal (121)_mask.png,normal (31),duplicate (kept another copy),1,0
+normal (122),normal,normal (122)_mask.png,normal (25),duplicate (kept another copy),1,0
+normal (123),normal,normal (123)_mask.png,normal (29),duplicate (kept another copy),0,0
+normal (124),normal,normal (124)_mask.png,normal (27),duplicate (kept another copy),0,0
+normal (125),normal,normal (125)_mask.png,normal (22),duplicate (kept another copy),0,0
+normal (126),normal,normal (126)_mask.png,normal (28),duplicate (kept another copy),0,0
+normal (127),normal,normal (127)_mask.png,normal (32),duplicate (kept another copy),0,0
+normal (128),normal,normal (128)_mask.png,normal (24),duplicate (kept another copy),0,0
+normal (129),normal,normal (129)_mask.png,normal (35),duplicate (kept another copy),0,0
+normal (130),normal,normal (130)_mask.png,normal (26),duplicate (kept another copy),0,0
+normal (131),normal,normal (131)_mask.png,normal (19),duplicate (kept another copy),0,0
+normal (132),normal,normal (132)_mask.png,normal (20),duplicate (kept another copy),0,0
+normal (133),normal,normal (133)_mask.png,normal (133),,0,1

@@ -1,0 +1,52 @@
+\begin{table}[!ht]
+\centering
+\caption{Precision of the F1 contrasts. Half-width: half the width of the 95\% interval, which the protocol (Section 7) called the smallest difference the design could detect; a true difference of that size is detected only about half of the time. 80\% power: the difference detected with 80\% power at the 5\% level, 2.80 times the standard error of the crossed bootstrap (post hoc).}\label{stab:mdd}
+\footnotesize
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{BUSI} & \multicolumn{2}{c}{BUS-BRA} & \multicolumn{2}{c}{BrEaST} \\
+Contrast & Half-width & 80\% power & Half-width & 80\% power & Half-width & 80\% power \\
+\midrule
+Q$_4$ vs Qp$_4$ & 0.014 & 0.020 & 0.024 & 0.035 & 0.024 & 0.035 \\
+Q$_4$ vs S$_4$ & 0.011 & 0.015 & 0.023 & 0.034 & 0.033 & 0.047 \\
+Q$_4$ vs Tr$_4$ & 0.016 & 0.022 & 0.030 & 0.041 & 0.034 & 0.049 \\
+Q$_4$ vs Cl$_4$ & 0.018 & 0.025 & 0.026 & 0.038 & 0.032 & 0.046 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{longtable}{@{}lllrccrl@{}}
+\caption{Post hoc analyses of existing runs (second addendum, part G). (a) The zero slot Z$_4$ and the identity slot Id$_4$ against Full on lesion Dice, with the noninferiority rule of F2. (b) BUSI Dice over the 457 lesion and 72 normal images, where an empty prediction on a normal image scores 1 and any other prediction 0. (c) Nested bootstrap on BUSI that resamples seeds, then fold models within a seed, then images within a fold. Holm correction within each part and dataset; equivalence with the 90\% interval inside $\pm0.02$, unadjusted.}\label{stab:rev3old}\\
+\toprule
+Part & Set & Contrast & Difference & 95\% interval & 90\% interval & Holm $p$ & Verdict \\
+\midrule
+\endfirsthead
+\toprule
+Part & Set & Contrast & Difference & 95\% interval & 90\% interval & Holm $p$ & Verdict \\
+\midrule
+\endhead
+(a) & BUSI & Z$_4$ vs Full & $-$0.017 & $-$0.031 to $-$0.003 & $-$0.028 to $-$0.005 & 0.037 & Lower \\
+(a) & BUSI & Id$_4$ vs Full & 0.021 & $-$0.004 to 0.045 & 0.001 to 0.041 & 0.091 & Noninferior \\
+(a) & BUS-BRA & Z$_4$ vs Full & 0.020 & $-$0.006 to 0.044 & $-$0.002 to 0.040 & 0.127 & Noninferior \\
+(a) & BUS-BRA & Id$_4$ vs Full & 0.097 & 0.061 to 0.144 & 0.065 to 0.136 & $<$0.001 & Higher, noninferior \\
+(a) & BrEaST & Z$_4$ vs Full & 0.032 & $-$0.005 to 0.073 & 0.001 to 0.066 & 0.092 & Noninferior \\
+(a) & BrEaST & Id$_4$ vs Full & 0.149 & 0.115 to 0.190 & 0.120 to 0.181 & $<$0.001 & Higher, noninferior \\
+\midrule
+(b) & BUSI & Tr$_4$ vs Full & $-$0.033 & $-$0.059 to $-$0.008 & $-$0.055 to $-$0.012 & 0.015 & Lower \\
+(b) & BUSI & Q$_4$ vs Full & $-$0.029 & $-$0.057 to $-$0.002 & $-$0.052 to $-$0.007 & 0.034 & Lower \\
+(b) & BUSI & Tr$_4$ vs U-Net & $-$0.057 & $-$0.077 to $-$0.039 & $-$0.074 to $-$0.042 & $<$0.001 & Lower \\
+(b) & BUSI & Q$_4$ vs U-Net & $-$0.054 & $-$0.076 to $-$0.032 & $-$0.072 to $-$0.035 & $<$0.001 & Lower \\
+(b) & BUSI & Z$_4$ vs Full & $-$0.028 & $-$0.045 to $-$0.011 & $-$0.043 to $-$0.014 & 0.009 & Lower \\
+(b) & BUSI & Id$_4$ vs Full & $-$0.040 & $-$0.066 to $-$0.014 & $-$0.062 to $-$0.018 & 0.007 & Lower \\
+\midrule
+(c) & BUSI & Q$_4$ vs Qp$_4$ & 0.004 & $-$0.014 to 0.023 & $-$0.011 to 0.019 & 1.000 & Equivalent \\
+(c) & BUSI & Q$_4$ vs S$_4$ & $-$0.009 & $-$0.024 to 0.006 & $-$0.022 to 0.003 & 0.851 & Inconclusive \\
+(c) & BUSI & Q$_4$ vs Tr$_4$ & 0.003 & $-$0.016 to 0.022 & $-$0.013 to 0.019 & 1.000 & Equivalent \\
+(c) & BUSI & Q$_4$ vs Cl$_4$ & 0.011 & $-$0.011 to 0.031 & $-$0.007 to 0.028 & 0.872 & Inconclusive \\
+\midrule
+(c) & BUSI & Tr$_4$ vs Full & 0.031 & 0.010 to 0.055 & 0.012 to 0.051 & 0.010 & Higher, noninferior \\
+(c) & BUSI & Q$_4$ vs Full & 0.034 & 0.017 to 0.053 & 0.019 to 0.049 & $<$0.001 & Higher, noninferior \\
+(c) & BUSI & Tr$_4$ vs U-Net & $-$0.032 & $-$0.055 to $-$0.007 & $-$0.052 to $-$0.011 & 0.012 & Lower \\
+(c) & BUSI & Q$_4$ vs U-Net & $-$0.029 & $-$0.046 to $-$0.011 & $-$0.043 to $-$0.014 & 0.010 & Lower \\
+\bottomrule
+\end{longtable}

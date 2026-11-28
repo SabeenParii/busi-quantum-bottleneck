@@ -79,11 +79,14 @@ def main(src, out):
         n = nrm[nrm.model == model]
         r["spec_busi"] = (n.pred_pixels == 0).mean()
         t = tabs["busi"]; t = t[(t.plan == "A") & (t.model == model)]
-        per_run = t.groupby("run_id").dice.agg(["sum", "count"])
-        nr = n.assign(d=(n.pred_pixels == 0).astype(float)).groupby("run_id").d.agg(["sum", "count"])
-        j = per_run.join(nr, rsuffix="_n")
+        # each lesion image is scored once by its fold model; each normal image is scored by all five fold
+        # models, so its score is averaged over them; the mean is then taken over the 529 images per seed
+        les = t.groupby("seed").dice.agg(["sum", "count"])
+        nrs = (n.assign(d=(n.pred_pixels == 0).astype(float)).groupby(["seed", "image"]).d.mean()
+               .groupby("seed").agg(["sum", "count"]))
+        j = les.join(nrs, rsuffix="_n")
         r["dice_busi_with_normals"] = ((j["sum"] + j["sum_n"]) / (j["count"] + j["count_n"])).mean()
-        r["dice_busi"] = (j["sum"] / j["count"]).mean()
+        r["dice_busi"] = (t.groupby("run_id").dice.mean()).mean()
         rows.append(r)
     det = pd.DataFrame(rows)
     det.to_csv(os.path.join(out, "detection_planA.csv"), index=False)
@@ -134,18 +137,19 @@ def tex(out):
     def v(r):
         out_ = []
         if r.p_holm < 0.05: out_.append("Higher" if r["diff"] > 0 else "Lower")
-        if r.equiv_protocol: out_.append("Equivalent" + ("" if r.equiv_adjusted else " (unadjusted)"))
+        if r.equiv_protocol: out_.append("Equivalent, " + ("also adjusted" if r.equiv_adjusted else "unadjusted only"))
         return ", ".join(out_) if out_ else "Inconclusive"
-    body = [f"{DS[r.dataset]} & {pair(r.contrast)} & {f3(r['diff'])} & {f3(r.ci95_lo)} to {f3(r.ci95_hi)} & {pf(r.p_holm)} & {v(r)} \\\\" for _, r in fid.iterrows()]
+    body = [f"{DS[r.dataset]} & {pair(r.contrast)} & {f3(r['diff'])} & {f3(r.ci95_lo)} to {f3(r.ci95_hi)} & {f3(r.ci90_lo)} to {f3(r.ci90_hi)} & {pf(r.p_holm)} & {v(r)} \\\\" for _, r in fid.iterrows()]
     s14 = longtab("stab:identity", "Each block against the identity slot Id$_4$ (plan A, post hoc). Holm correction within each dataset; verdicts as in Eq.~(2) of the main text. "
-                  "Unadjusted: equivalent only without adjustment for multiplicity.",
-                  r"Set & Contrast & Difference & 95\% interval & $p$ & Verdict", body, "@{}llrcrl@{}")
+                  "Equivalence: 90\\% interval inside $\\pm0.02$; also adjusted: the 98\\% interval ($1-2\\alpha/m$ with $m=5$) as well. $p$: Holm-adjusted.",
+                  r"Set & Contrast & Difference & 95\% interval & 90\% interval & Holm $p$ & Verdict", body, "@{}llrccrl@{}")
     det = pd.read_csv(os.path.join(out, "detection_planA.csv")).set_index("model").reindex(["q4", "qp4", "s4", "tr4", "cl4", "id4", "full", "unet"])
     body = [f"{NM[m]} & {100*r.sens_busi:.1f} & {100*r.sens_busbra:.1f} & {100*r.sens_breast:.1f} & {100*r.spec_busi:.1f} & {r.dice_busi:.3f} & {r.dice_busi_with_normals:.3f} \\\\"
             for m, r in det.iterrows()]
     s15 = longtab("stab:detect", "Image-level detection for plan A (post hoc, mean over 25 runs). Sensitivity: lesion images with any predicted lesion pixel. "
                   "Specificity: normal BUSI images without any predicted pixel. Dice with normals: mean over the 457 lesion and 72 normal BUSI images, "
-                  "where an empty prediction on a normal image scores 1 and any prediction on it scores 0.",
+                  "where an empty prediction on a normal image scores 1 and any prediction on it scores 0. Each lesion image is scored by its fold model; "
+                  "the score of each normal image is averaged over the five fold models.",
                   r"Model & \multicolumn{3}{c}{Sensitivity (\%)} & Specificity (\%) & \multicolumn{2}{c}{BUSI Dice} \\ & BUSI & BUS-BRA & BrEaST & BUSI normals & Lesions & With normals",
                   body, "@{}lrrrrrr@{}")
     open(os.path.join(out, "supp_posthoc.tex"), "w").write("\n".join([s13, s14, s15]))

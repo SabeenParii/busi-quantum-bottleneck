@@ -1,0 +1,47 @@
+Second addendum to PROTOCOL_busi_prespecified.txt (written 28 November 2026, before any run of notebook 08)
+---------------------------------------------------------------------------------------------------------------
+This addendum fixes the analysis of the runs of notebook 08 before the first of them starts. Its commit time and the
+time of the first run (summary.json of the earliest run in runs_rev3) show the order. The runs are added after the
+protocol and are labelled "added after the protocol, analysis fixed before the runs" in the article.
+
+E. Graded positive control (part 1 of notebook 08)
+   Models: ma4, mb4 and mc4 keep the first 3, 2 and 1 of the four code values and set the others to zero. With Id4
+   (four values) and Z4 (none, notebook 07) they form five levels of information in the slot. Plan A, 25 runs each,
+   same folds, seeds, initial weights and settings as the main runs, k not applicable.
+   Family PC2, on each of BUSI, BUS-BRA and BrEaST: Id4 against ma4, mb4, mc4 and Z4. Same crossed bootstrap
+   (B = 10,000), clusters and Holm correction as Section 7; random numbers from SeedSequence(2029), one generator per
+   family in the order BUSI, BUS-BRA, BrEaST. A loss is detected if the 95% interval of Id4 minus the masked slot lies
+   above zero and the Holm p value is below 0.05. Reported: the five levels, the four contrasts and the smallest loss
+   detected. No claim depends on the outcome.
+
+F. Factor reselection and retraining (parts 2 and 3 of notebook 08)
+   Selection: Q4, Qp4, S4, Tr4 and Cl4, each with k = 1, 10 and 100, folds 0 and 2, seeds 100, 101 and 102 (90 runs,
+   at most 80 epochs, as the original selection). Each run uses the training and validation images of its fold; the
+   test images of that fold are not used. New factor of a block: the k with the lowest mean best validation loss over
+   its six runs. A block is retrained in all 25 plan A runs only if its new factor has not been run before.
+   Family F1f, on each of BUSI, BUS-BRA and BrEaST: Q4 against Qp4, S4, Tr4 and Cl4, every block at its new factor,
+   using existing runs where the factor was already run. Same bootstrap and Holm correction as Section 7; random
+   numbers from SeedSequence(2030), one generator per family in the order BUSI, BUS-BRA, BrEaST. Verdicts as in
+   Section 7: difference if Holm p < 0.05; equivalent if the 90% interval lies within +-0.02, reported unadjusted and
+   with the 1 - 2 alpha / m interval. The prespecified F1 result of Section 7 stays the primary analysis; F1f is
+   reported beside it.
+
+G. Analyses of existing runs in this round (post hoc, reported as such)
+   1. Z4 and Id4 against Full on lesion Dice, with the F2 noninferiority rule.
+   2. Dice of lesion and normal images together (an empty prediction on a normal image counts as 1, any other as 0),
+      with crossed bootstrap intervals for the contrasts of F2.
+   3. For F1 and F2, intervals from a nested bootstrap that resamples seeds, then the five fold models within each
+      seed, then images within each fold, as a check of the crossed bootstrap.
+   4. The difference that each F1 contrast would detect with 80% power, taken as 2.80 times the bootstrap standard
+      error. Addendum D called the interval half-width the smallest detectable difference; a true difference of that
+      size is detected only about half of the time.
+
+H. Clarifications of the protocol text (no change to any analysis)
+   1. Section 2.4 describes BrEaST as 256 images with lesion masks. Four of the 256 images show no lesion and have no
+      lesion mask; the 252 images with a lesion mask were used, as stated in the article.
+   2. Section 7 calls the Holm-adjusted noninferiority test "equivalently" a lower 90% limit above -0.02. The two agree
+      only without adjustment. The reported verdicts use the Holm-adjusted one-sided bootstrap p values.
+   3. Version 1.1 was committed before any factor-selection run had finished. Whether a selection run had already
+      started at 17:21 on 14 November cannot be shown from the run files, which store no start time; no selection
+      result was known.
+   4. The total compute of runs outside the protocol (179 training runs before this addendum) was about 47 GPU hours.

@@ -12,7 +12,7 @@ plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9, 'axes.titlesi
                      'axes.spines.top': False, 'axes.spines.right': False, 'axes.linewidth': 0.7})
 C = pd.read_csv(R + 'contrasts.csv'); L = pd.read_csv(R + 'model_levels.csv')
 DS = [('busi', 'BUSI'), ('busbra', 'BUS-BRA'), ('breast', 'BrEaST')]
-NAME = {'q4': 'Q', 'qp4': 'Qp', 's4': 'S', 'tr4': 'Tr', 'cl4': 'Cl', 'id4': 'Id', 'full': 'Full', 'unet': 'U-Net'}
+NAME = {'q4': 'Q$_4$', 'qp4': 'Qp$_4$', 's4': 'S$_4$', 'tr4': 'Tr$_4$', 'cl4': 'Cl$_4$', 'id4': 'Id$_4$', 'full': 'Full', 'unet': 'U-Net'}
 lab = lambda c: ' vs '.join(NAME[x.strip()] for x in c.split('-'))
 BLUE, ORANGE = '#1f4e79', '#b4541f'
 

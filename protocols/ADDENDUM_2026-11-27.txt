@@ -5,8 +5,9 @@ what happened after that commit, so that the record is complete. Nothing here ch
 
 A. Publication target and related work
    The protocol names a conference as the target venue. The article was later prepared for Artificial Intelligence
-   in Medicine. The two related studies named as P1 and P2 are under review at the IEEE Journal of Biomedical and
-   Health Informatics (P1) and will be submitted to Neurocomputing (P2). No image, run or result of P1 or P2 is used.
+   in Medicine. It has not been submitted to that conference or to any other venue. The two related studies named as
+   P1 and P2 are under review at the IEEE Journal of Biomedical and Health Informatics (P1) and will be submitted to
+   Neurocomputing (P2). No image, run or result of P1 or P2 is used.
 
 B. Deviations
    1. Initialization check. The protocol asked that the shared initial weights of all models of a seed be identical.
@@ -27,8 +28,22 @@ C. Analyses outside the protocol (exploratory, reported as such)
    3. Retraining of Qp4 and Q8 with k = 100 (notebook 05_equal_k.ipynb, analysis/equal_k.py, Supplementary Table S11).
    4. Intervals from the five seed means alone for F1 (Supplementary Table S10).
    5. Comparison of the reported results with the original 23 runs (analysis/min_epochs.py, Supplementary Table S12).
+   6. Post hoc analyses (analysis/review_extra.py): equivalence with intervals adjusted for the four F1 contrasts
+      (Table S13), contrasts of each block against the identity slot (Table S14) and image-level detection with
+      BUSI Dice including the normal images (Table S15). In the last, each lesion image is scored by its fold model
+      and each normal image by the mean over the five fold models.
+   7. The seed-level t intervals of item 4, the margin sensitivity and the 500-pixel false-positive threshold were
+      all chosen after the runs.
+   8. Runs added after all prespecified runs (notebook 07, analysis/rev2.py, Table S21): Tr4 and Tr8 retrained with
+      k = 100, so that with the reruns of item 3 every block of F1 and F4 shares one factor, and a positive control
+      Z4 whose slot outputs zeros (75 runs). Reported as exploratory.
 
-D. Prespecified outputs not reported in the article
-   Leave-one-seed-out estimates (Section 7), the gradient share at the first epoch (Section 6.3) and F1 contrasts by
-   class (Section 7) are not reported in the article. They can be computed from the per-run and per-image files in
-   results/data. Levels by class are reported in Supplementary Table S8.
+D. Prespecified outputs
+   Reported in Supplementary Tables S18 to S20 (analysis/protocol_outputs.py): pixel precision and recall
+   (Section 5), the weight change of the dense layers before and after the slot (Section 6.2), the interval
+   half-width of each F1 contrast as the smallest detectable difference (Section 7), and the BUSI cleaning counts
+   with the difference-hash audit (Section 2.1).
+   Not reported in the article: leave-one-seed-out estimates and per-seed estimates for families other than F1
+   (Section 7), the gradient share at the first epoch (Section 6.3) and F1 contrasts by class (Section 7). They can be
+   computed from the per-run and per-image files in results/data. Levels by class are reported in Supplementary
+   Table S8. Entanglement at initialization was not recorded.

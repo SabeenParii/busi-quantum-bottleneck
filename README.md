@@ -2,7 +2,7 @@
 
 Protocol, code and results for the study **"Does a quantum bottleneck help breast ultrasound lesion segmentation? A prespecified comparison with classical layers at the same position in the network"** (S. Parii, A. Tujammal, A. Iqbal, R. Ashraf, F. Aadil; submitted to *Artificial Intelligence in Medicine*).
 
-A simulated circuit with four qubits in the bottleneck slot of a U-Net is compared, in the same slot and from the same initial weights, with five controls: the same circuit without CNOT gates (Qp), a layer that spans the full Fourier series of the circuit (S), a trigonometric layer (Tr), a dense layer (Cl) and an identity mapping (Id). The analysis plan was fixed before the first main run (`protocols/PROTOCOL_busi_prespecified.txt`); later deviations and analyses outside the protocol are listed in `protocols/ADDENDUM_2026-11-27.txt`.
+A simulated circuit with four qubits in the bottleneck slot of a U-Net is compared, in the same slot and from the same initial weights, with five controls: the same circuit without CNOT gates (Qp), a layer that spans the full Fourier series of the circuit (S), a trigonometric layer (Tr), a dense layer (Cl) and an identity mapping (Id). The analysis plan was fixed before the first main run (`protocols/PROTOCOL_busi_prespecified.txt`); later deviations and analyses outside the protocol are listed in `protocols/ADDENDUM_2026-11-27.txt` and `protocols/ADDENDUM_2026-11-28.txt`; the second addendum fixed the analysis of the runs of notebook 08 before they started.
 
 Archived on Zenodo (all versions): https://doi.org/10.5281/zenodo.24536630; version 1.0.0: https://doi.org/10.5281/zenodo.24536631
 
@@ -15,7 +15,7 @@ No image data are stored in this repository. BUSI, BUS-BRA and BrEaST are downlo
 | `protocols/` | The prespecified protocol (data cleaning, folds, models, training, run plans, metrics, statistics, claims) and a dated addendum with deviations and exploratory analyses |
 | `src/` | `qsim.py` state-vector simulator; `qbus.py` models, blocks, training and bottleneck audit; `prep.py` data preparation; `runner.py` run list and Drive lock files; `analysis.py` statistics of protocol Section 7; `qnoise.py` density-matrix noise model; `noise_run.py` noise test; `qual_run.py` qualitative examples |
 | `tests/` | Checks of the simulator and of the noise model against an independent implementation |
-| `notebooks/` | Google Colab notebooks: `00_data_prep`, `01_train` and `01_train_B` (training, two sessions), `02_collect`, `02b_split_busbra`, `03_noise` (exploratory noise test), `04_qualitative` (examples of Fig. 6), `05_equal_k` (exploratory rerun of Qp4 and Q8 with k = 100, run in two sessions), `06_min_epochs` (retraining of the 23 plan C runs that stopped before epoch 30) |
+| `notebooks/` | Google Colab notebooks: `00_data_prep`, `01_train` and `01_train_B` (training, two sessions), `02_collect`, `02b_split_busbra`, `03_noise` (exploratory noise test), `04_qualitative` (examples of Fig. 6), `05_equal_k` (exploratory rerun of Qp4 and Q8 with k = 100, run in two sessions), `06_min_epochs` (retraining of the 23 plan C runs that stopped before epoch 30), `07_rev2_equal_k_positive_control` (Tr4 and Tr8 with k = 100, zero slot Z4), `08_rev3_graded_control_factor_reselection` (slots keeping 3, 2 or 1 code values; factor reselection over three seeds and two folds) |
 | `analysis/` | Scripts that turn the result files into the tables and figures of the manuscript |
 | `results/data/` | Files written by `02_collect`: split of every BUSI image (`busi_manifest.csv`), summary of every run (`summaries.csv`), Dice of every test image in every run (`test_busi`, `test_busbra`, `test_breast`), normal images, code replacement, finite shots, selected learning rate factors (`plan_decision.json`) |
 | `results/stats/` | Statistics computed from `results/data/` |
@@ -32,6 +32,8 @@ python src/analysis.py results/data results/stats            # model levels, all
 python analysis/gap.py results/data results/stats/gap_contrasts.csv          # exploratory gap contrasts
 python analysis/noise.py results/noise/noise_q4.csv.gz results/stats/noise_contrasts.csv   # exploratory noise test
 python analysis/equal_k.py results/data results/k100 results/stats/equal_k_contrasts.csv   # exploratory rerun with equal factors
+python analysis/rev2.py results/data results/k100 results/rev2 results/stats/rev2            # Table S21
+python analysis/rev3_existing.py results/data results/rev2 results/stats/rev3              # Tables S19, S22 and the 500-pixel column of S15
 python analysis/min_epochs.py results/data results/original23 results/stats/min30   # Supplementary Table S12
 RESULTS=results/stats/ DECISION=results/data/plan_decision.json OUT=out python analysis/tabs2.py
 RESULTS=results/stats/ OUT=out python analysis/figs2.py

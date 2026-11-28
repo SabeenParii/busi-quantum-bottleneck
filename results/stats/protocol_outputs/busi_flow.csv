@@ -1,0 +1,6 @@
+reason,benign,malignant,normal
+axilla,15,11,18
+cross-class duplicate,10,7,2
+duplicate (kept another copy),116,26,40
+kept,296,161,72
+needle,0,5,1
